@@ -4,7 +4,12 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/projects/Cart2Go2/app/src/main/res/drawable/custom_button.xml" value="0.175" />
+        <entry key="..\:/projects/Cart2Go2/app/src/main/res/drawable/ic_baseline_create_24.xml" value="0.178" />
+        <entry key="..\:/projects/Cart2Go2/app/src/main/res/drawable/ic_baseline_storage_24.xml" value="0.178" />
+        <entry key="..\:/projects/Cart2Go2/app/src/main/res/layout/activity_add_product.xml" value="0.33" />
+        <entry key="..\:/projects/Cart2Go2/app/src/main/res/layout/activity_list_product.xml" value="0.11944444444444445" />
         <entry key="..\:/projects/Cart2Go2/app/src/main/res/layout/activity_main.xml" value="0.38333333333333336" />
+        <entry key="..\:/projects/Cart2Go2/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.178" />
       </map>
     </option>
   </component>
