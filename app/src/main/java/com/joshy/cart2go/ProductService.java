@@ -9,7 +9,7 @@ public interface ProductService {
     @GET("/products")
     Call<List<Product>> getProducts();
 
-    @POST("/products")
+    @POST("/product")
     Call<Void> addProduct(@Body Product product);
 
     @PUT("/products/{id}")

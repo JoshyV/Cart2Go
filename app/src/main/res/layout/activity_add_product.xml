@@ -6,6 +6,7 @@
     android:layout_height="match_parent"
     tools:context=".Add_Product">
 
+
     <ImageView
         android:id="@+id/imageView2"
         android:layout_width="60dp"
@@ -54,7 +55,7 @@
             android:layout_width="227dp"
             android:layout_height="wrap_content"
             android:drawableEnd="@drawable/ic_barcode"
-            android:enabled="false"
+            android:enabled="true"
             android:fontFamily="@font/poppinsmedium"
             android:textColorHint="#546E7A"
             tools:ignore="TextContrastCheck,TextContrastCheck" />
@@ -81,11 +82,11 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/textInputLayoutBarcode"
-        android:layout_alignParentStart="true"
         android:layout_alignParentEnd="true"
-        android:layout_marginStart="14dp"
+        android:layout_marginStart="12dp"
         android:layout_marginTop="4dp"
         android:layout_marginEnd="35dp"
+        android:layout_toEndOf="@+id/bcheckbox"
         android:hint="Brand"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.086"
@@ -94,24 +95,35 @@
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/ap_brand"
-            android:layout_width="350dp"
+            android:layout_width="320dp"
             android:layout_height="match_parent"
             android:drawableEnd="@drawable/ic_baseline_create_24"
             android:fontFamily="@font/poppinsmedium"
             android:textColorHint="#546E7A"
             tools:ignore="TextContrastCheck,TextContrastCheck" />
+
     </com.google.android.material.textfield.TextInputLayout>
+
+    <CheckBox
+        android:id="@+id/bcheckbox"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/textInputLayoutBarcode"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="19dp"
+        android:layout_weight="1" />
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/textInputLayoutVariant"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/textInputLayoutBrand"
-        android:layout_alignParentStart="true"
         android:layout_alignParentEnd="true"
-        android:layout_marginStart="14dp"
+        android:layout_marginStart="12dp"
         android:layout_marginTop="4dp"
         android:layout_marginEnd="35dp"
+        android:layout_toEndOf="@+id/vcheckbox"
         android:hint="Variant"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.086"
@@ -120,7 +132,7 @@
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/ap_variant"
-            android:layout_width="350dp"
+            android:layout_width="320dp"
             android:layout_height="match_parent"
             android:drawableEnd="@drawable/ic_variant"
             android:fontFamily="@font/poppinsmedium"
@@ -128,16 +140,26 @@
             tools:ignore="TextContrastCheck,TextContrastCheck" />
     </com.google.android.material.textfield.TextInputLayout>
 
+    <CheckBox
+        android:id="@+id/vcheckbox"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/textInputLayoutBrand"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="20dp"
+        android:layout_weight="1" />
+
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/textInputLayoutVolume"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/textInputLayoutVariant"
-        android:layout_alignParentStart="true"
         android:layout_alignParentEnd="true"
-        android:layout_marginStart="14dp"
+        android:layout_marginStart="12dp"
         android:layout_marginTop="4dp"
         android:layout_marginEnd="35dp"
+        android:layout_toEndOf="@+id/vlcheckbox"
         android:hint="Volume"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.086"
@@ -146,7 +168,7 @@
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/ap_volume"
-            android:layout_width="350dp"
+            android:layout_width="320dp"
             android:layout_height="match_parent"
             android:drawableEnd="@drawable/ic_volume"
             android:fontFamily="@font/poppinsmedium"
@@ -154,16 +176,26 @@
             tools:ignore="TextContrastCheck,TextContrastCheck" />
     </com.google.android.material.textfield.TextInputLayout>
 
+    <CheckBox
+        android:id="@+id/vlcheckbox"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/textInputLayoutVariant"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="20dp"
+        android:layout_weight="1" />
+
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/textInputLayoutDescription"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/textInputLayoutVolume"
-        android:layout_alignParentStart="true"
         android:layout_alignParentEnd="true"
-        android:layout_marginStart="14dp"
+        android:layout_marginStart="12dp"
         android:layout_marginTop="4dp"
         android:layout_marginEnd="35dp"
+        android:layout_toEndOf="@+id/descheckbox"
         android:hint="Description"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.086"
@@ -172,7 +204,7 @@
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/ap_description"
-            android:layout_width="350dp"
+            android:layout_width="320dp"
             android:layout_height="match_parent"
             android:drawableEnd="@drawable/ic_baseline_create_24"
             android:fontFamily="@font/poppinsmedium"
@@ -180,6 +212,15 @@
             tools:ignore="TextContrastCheck,TextContrastCheck" />
     </com.google.android.material.textfield.TextInputLayout>
 
+    <CheckBox
+        android:id="@+id/descheckbox"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/textInputLayoutVolume"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="20dp"
+        android:layout_weight="1" />
     <Button
         android:id="@+id/addProductButton"
         android:layout_width="wrap_content"

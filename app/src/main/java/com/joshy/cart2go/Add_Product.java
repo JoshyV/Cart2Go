@@ -5,7 +5,9 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.CheckBox;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -16,7 +18,7 @@ public class Add_Product extends AppCompatActivity {
     private static final String TAG = "Add_Product";
 
     private EditText barcode, brand, variant, volume, description;
-
+    private CheckBox brandcheck, variantcheck, volumecheck, descriptioncheck;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -28,6 +30,10 @@ public class Add_Product extends AppCompatActivity {
         volume = findViewById(R.id.ap_volume);
         description = findViewById(R.id.ap_description);
 
+        brandcheck = findViewById(R.id.bcheckbox);
+        variantcheck = findViewById(R.id.vcheckbox);
+        volumecheck = findViewById(R.id.vlcheckbox);
+        descriptioncheck = findViewById(R.id.descheckbox);
         // Assuming you have a button to add the product, add an OnClickListener to it
         findViewById(R.id.addProductButton).setOnClickListener(new View.OnClickListener() {
             @Override
@@ -49,23 +55,29 @@ public class Add_Product extends AppCompatActivity {
         Product newProduct = new Product(barcodeText, brandText, variantText, volumeText, descriptionText);
 
         // Call the addProduct method of ProductService to add the new product
-        ProductService productService = RetrofitClient.getClient().create(ProductService.class);
+        String jwtToken = "4a6991e578554757df7656ac3ac44b73eb9be43a54e9835fdd0444805fd346f29497c5b46a81e484f9598c915200e9fd3fc9b74a6f1e0e0798cdd0879a33439b";
+        ProductService productService = RetrofitClient.getClient(jwtToken).create(ProductService.class);
         Call<Void> addCall = productService.addProduct(newProduct);
         addCall.enqueue(new Callback<Void>() {
             @Override
             public void onResponse(Call<Void> call, Response<Void> response) {
                 if (response.isSuccessful()) {
-                    Log.d(TAG, "Product added successfully");
-                    // If the product is added successfully, navigate back to MainActivity
-                    goBack();
+                    EditText[] editTexts = {brand, variant, volume, description};
+                    CheckBox[] checkBoxes = {brandcheck, variantcheck, volumecheck, descriptioncheck};
+                    for (int i = 0; i < editTexts.length; i++) {
+                        if (!checkBoxes[i].isChecked()) {
+                            editTexts[i].setText("");
+                        }
+                    }
+                    Toast.makeText(getApplicationContext(),"Product added successfully", Toast.LENGTH_LONG).show();
                 } else {
-                    Log.e(TAG, "Failed to add product: " + response.code());
+                    Toast.makeText(getApplicationContext(),"(Adding Product) Error: "+ response.code(), Toast.LENGTH_LONG).show();
                 }
             }
 
             @Override
             public void onFailure(Call<Void> call, Throwable t) {
-                Log.e(TAG, "Error adding product: " + t.getMessage());
+                Toast.makeText(getApplicationContext(),"(Adding Product) Error: "+ t.getMessage(), Toast.LENGTH_LONG).show();
             }
         });
     }
