@@ -19,6 +19,7 @@ public class Add_Product extends AppCompatActivity {
 
     private EditText barcode, brand, variant, volume, description;
     private CheckBox brandcheck, variantcheck, volumecheck, descriptioncheck;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -39,6 +40,15 @@ public class Add_Product extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 addProduct();
+            }
+        });
+        findViewById(R.id.textView).setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                startActivity(intent);
+                overridePendingTransition(0, 0);
+                finish();
             }
         });
     }

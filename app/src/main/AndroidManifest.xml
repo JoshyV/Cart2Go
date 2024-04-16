@@ -24,6 +24,11 @@
         android:theme="@style/Theme.Cart2Go"
         tools:targetApi="33">
         <activity
+            android:name=".ProductDetailActivity"
+            android:exported="false"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.Design.Light.NoActionBar" />
+        <activity
             android:name=".List_Product"
             android:exported="false"
             android:screenOrientation="portrait"
@@ -36,7 +41,6 @@
         <activity
             android:name=".MainActivity"
             android:exported="true"
-            android:noHistory="true"
             android:screenOrientation="portrait"
             android:theme="@style/Theme.Design.Light.NoActionBar">
             <intent-filter>

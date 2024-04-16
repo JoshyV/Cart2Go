@@ -17,4 +17,10 @@ public interface ProductService {
 
     @DELETE("/products/{id}")
     Call<Void> deleteProduct(@Path("id") String id);
+
+    @GET("/getUpdates")
+    Call<List<Product>> getUpdates();
+
+    @GET("/search")
+    Call<List<Product>> searchProducts(@Query("brand") String brand);
 }
