@@ -65,8 +65,7 @@ public class Add_Product extends AppCompatActivity {
         Product newProduct = new Product(barcodeText, brandText, variantText, volumeText, descriptionText);
 
         // Call the addProduct method of ProductService to add the new product
-        String jwtToken = "4a6991e578554757df7656ac3ac44b73eb9be43a54e9835fdd0444805fd346f29497c5b46a81e484f9598c915200e9fd3fc9b74a6f1e0e0798cdd0879a33439b";
-        ProductService productService = RetrofitClient.getClient(jwtToken).create(ProductService.class);
+        ProductService productService = RetrofitClient.getClient().create(ProductService.class);
         Call<Void> addCall = productService.addProduct(newProduct);
         addCall.enqueue(new Callback<Void>() {
             @Override

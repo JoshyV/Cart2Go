@@ -9,13 +9,13 @@ public class RetrofitClient {
     private static final String BASE_URL = "https://c2g.dev/";
     private static Retrofit retrofit;
 
-    public static Retrofit getClient(final String authToken) {
+    public static Retrofit getClient() {
         if (retrofit == null) {
             OkHttpClient.Builder httpClient = new OkHttpClient.Builder();
             httpClient.addInterceptor(chain -> {
                 Request original = chain.request();
                 Request.Builder requestBuilder = original.newBuilder()
-                        .header("Authorization", " " + authToken);
+                        .header("Authorization", " joshyv");
                 Request request = requestBuilder.build();
                 return chain.proceed(request);
             });

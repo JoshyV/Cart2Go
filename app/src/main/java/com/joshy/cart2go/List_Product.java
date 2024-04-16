@@ -94,8 +94,7 @@ public class List_Product extends AppCompatActivity {
     private void searchProducts(String brand) {
         // Retrofit setup...
         // Create Retrofit instance with appropriate JWT token
-        String jwtToken = "4a6991e578554757df7656ac3ac44b73eb9be43a54e9835fdd0444805fd346f29497c5b46a81e484f9598c915200e9fd3fc9b74a6f1e0e0798cdd0879a33439b"; // Replace with your JWT token
-        Retrofit retrofit = RetrofitClient.getClient(jwtToken);
+        Retrofit retrofit = RetrofitClient.getClient();
         ProductService service = retrofit.create(ProductService.class);
 
         // Make network request to search products by brand name
@@ -127,8 +126,7 @@ public class List_Product extends AppCompatActivity {
         });
     }
     private void pollForUpdates() {
-        String jwtToken = "4a6991e578554757df7656ac3ac44b73eb9be43a54e9835fdd0444805fd346f29497c5b46a81e484f9598c915200e9fd3fc9b74a6f1e0e0798cdd0879a33439b";
-        Retrofit retrofit = RetrofitClient.getClient(jwtToken);
+        Retrofit retrofit = RetrofitClient.getClient();
         ProductService service = retrofit.create(ProductService.class);
         Call<List<Product>> call = service.getUpdates();
         call.enqueue(new Callback<List<Product>>() {
