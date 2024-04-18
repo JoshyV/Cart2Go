@@ -1,25 +1,33 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/card_view"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_margin="8dp"
     android:padding="16dp"
+    android:layout_rowWeight="1"
+    android:layout_columnWeight="1"
+    app:cardCornerRadius="12dp"
+    android:clickable="true"
+    app:cardElevation="6dp"
+    app:cardPreventCornerOverlap="false"
+    app:cardUseCompatPadding="true"
     android:foreground="?android:attr/selectableItemBackground">
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical">
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:padding="16dp">
 
         <TextView
             android:id="@+id/text_brand_variant"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="16sp"
-            android:textStyle="bold" />
-
-        <!-- Add more TextViews for other product details if needed -->
-
+            android:text="Brand"
+            android:textColor="#6f6f6f"
+            android:textSize="18sp" />
     </LinearLayout>
 </androidx.cardview.widget.CardView>

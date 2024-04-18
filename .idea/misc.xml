@@ -8,9 +8,11 @@
         <entry key="..\:/projects/Cart2Go2/app/src/main/res/drawable/ic_baseline_storage_24.xml" value="0.178" />
         <entry key="..\:/projects/Cart2Go2/app/src/main/res/layout/activity_add_product.xml" value="0.33" />
         <entry key="..\:/projects/Cart2Go2/app/src/main/res/layout/activity_list_product.xml" value="0.33" />
+        <entry key="..\:/projects/Cart2Go2/app/src/main/res/layout/activity_login.xml" value="0.240625" />
         <entry key="..\:/projects/Cart2Go2/app/src/main/res/layout/activity_main.xml" value="0.38333333333333336" />
         <entry key="..\:/projects/Cart2Go2/app/src/main/res/layout/activity_product_detail.xml" value="0.12407407407407407" />
-        <entry key="..\:/projects/Cart2Go2/app/src/main/res/layout/item_product.xml" value="0.12407407407407407" />
+        <entry key="..\:/projects/Cart2Go2/app/src/main/res/layout/fragment_login.xml" value="0.2546875" />
+        <entry key="..\:/projects/Cart2Go2/app/src/main/res/layout/item_product.xml" value="0.33" />
         <entry key="..\:/projects/Cart2Go2/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.178" />
       </map>
     </option>

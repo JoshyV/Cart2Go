@@ -17,6 +17,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
         //Add Product Start
         addpbutton = findViewById(R.id.addpbutton);
         addpbutton.setOnClickListener(new android.view.View.OnClickListener() {
@@ -29,6 +30,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
         //Add Product End
+
 
         //Product List
         listpbutton = findViewById(R.id.listpbutton);
