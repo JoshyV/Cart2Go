@@ -62,20 +62,20 @@
 
     </com.google.android.material.textfield.TextInputLayout>
 
+
     <Button
         android:id="@+id/sbarcode"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/textView"
         android:layout_alignParentEnd="true"
-        android:layout_marginStart="35dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginEnd="38dp"
+        android:layout_marginStart="38dp"
+        android:layout_marginTop="18dp"
+        android:layout_marginEnd="35dp"
         android:layout_toEndOf="@+id/textInputLayoutBarcode"
         android:background="@drawable/custom_button"
         android:text="Scan Barcode"
         android:textColor="#FFFFFF" />
-
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/textInputLayoutBrand"
@@ -234,5 +234,19 @@
         android:layout_marginEnd="156dp"
         android:background="@drawable/custom_button"
         android:text="Add product"
+        android:textColor="#FFFFFF" />
+
+    <Button
+        android:id="@+id/ImageButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/addProductButton"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="156dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="156dp"
+        android:background="@drawable/custom_button"
+        android:text="Image Upload"
         android:textColor="#FFFFFF" />
 </RelativeLayout>

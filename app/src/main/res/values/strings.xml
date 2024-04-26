@@ -10,4 +10,5 @@
     <string name="signuphere">Create new account? Sign Up</string>
     <string name="welcome">Welcome</string>
     <string name="progress_detail">Progress</string>
+    <string name="remember_me">Remember Me</string>
 </resources>

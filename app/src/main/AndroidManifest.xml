@@ -8,7 +8,10 @@
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
     <uses-permission android:name="android.permission.CAMERA" />
     <uses-permission android:name="android.permission.VIBRATE" />
-
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.MANAGE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_MEDIA_IMAGES" />
     <uses-feature
         android:name="android.hardware.camera"
         android:required="true" />
@@ -24,27 +27,13 @@
         android:theme="@style/Theme.Cart2Go"
         tools:targetApi="33">
         <activity
+            android:name=".Settings_Panel"
+            android:exported="false" />
+        <activity
+            android:name=".Admin_Panel"
+            android:exported="false" />
+        <activity
             android:name=".Login"
-            android:exported="false"
-            android:screenOrientation="portrait"
-            android:theme="@style/Theme.Design.Light.NoActionBar" />
-        <activity
-            android:name=".ProductDetailActivity"
-            android:exported="false"
-            android:screenOrientation="portrait"
-            android:theme="@style/Theme.Design.Light.NoActionBar" />
-        <activity
-            android:name=".List_Product"
-            android:exported="false"
-            android:screenOrientation="portrait"
-            android:theme="@style/Theme.Design.Light.NoActionBar" />
-        <activity
-            android:name=".Add_Product"
-            android:exported="false"
-            android:screenOrientation="portrait"
-            android:theme="@style/Theme.Design.Light.NoActionBar" />
-        <activity
-            android:name=".MainActivity"
             android:exported="true"
             android:screenOrientation="portrait"
             android:theme="@style/Theme.Design.Light.NoActionBar">
@@ -54,6 +43,26 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".backend.ProductDetailActivity"
+            android:exported="true"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.Design.Light.NoActionBar" />
+        <activity
+            android:name=".List_Product"
+            android:exported="true"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.Design.Light.NoActionBar" />
+        <activity
+            android:name=".Add_Product"
+            android:exported="true"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.Design.Light.NoActionBar" />
+        <activity
+            android:name=".MainActivity"
+            android:exported="true"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.Design.Light.NoActionBar" />
     </application>
 
 </manifest>

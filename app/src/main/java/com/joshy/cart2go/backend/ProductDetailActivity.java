@@ -1,4 +1,4 @@
-package com.joshy.cart2go;
+package com.joshy.cart2go.backend;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -7,6 +7,8 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+
+import com.joshy.cart2go.R;
 
 public class ProductDetailActivity extends AppCompatActivity {
 

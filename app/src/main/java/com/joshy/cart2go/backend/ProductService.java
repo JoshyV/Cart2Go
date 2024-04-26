@@ -1,7 +1,11 @@
-package com.joshy.cart2go;
+package com.joshy.cart2go.backend;
+
+import com.joshy.cart2go.LoginRequest;
 
 import java.util.List;
 
+import okhttp3.MultipartBody;
+import okhttp3.RequestBody;
 import retrofit2.Call;
 import retrofit2.http.*;
 
@@ -23,4 +27,7 @@ public interface ProductService {
 
     @GET("/search")
     Call<List<Product>> searchProducts(@Query("brand") String brand);
+
+    @POST("/login")
+    Call<LoginRequest.Response> login(@Body LoginRequest.Request request);
 }

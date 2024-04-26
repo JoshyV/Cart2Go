@@ -1,4 +1,5 @@
-package com.joshy.cart2go;
+package com.joshy.cart2go.backend;
+
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import retrofit2.Retrofit;
@@ -15,7 +16,8 @@ public class RetrofitClient {
             httpClient.addInterceptor(chain -> {
                 Request original = chain.request();
                 Request.Builder requestBuilder = original.newBuilder()
-                        .header("Authorization", " 4a6991e578554757df7656ac3ac44b73eb9be43a54e9835fdd0444805fd346f29497c5b46a81e484f9598c915200e9fd3fc9b74a6f1e0e0798cdd0879a33439b");
+                        .header("Authorization", " 4a6991e578554757df7656ac3ac44b73eb9be43a54e9835fdd0444805fd346f29497c5b46a81e484f9598c915200e9fd3fc9b74a6f1e0e0798cdd0879a33439b")
+                        .header("Content-Type", " application/json");
                 Request request = requestBuilder.build();
                 return chain.proceed(request);
             });
@@ -29,4 +31,3 @@ public class RetrofitClient {
         return retrofit;
     }
 }
-

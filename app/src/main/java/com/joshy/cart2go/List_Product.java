@@ -12,9 +12,13 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.joshy.cart2go.backend.Product;
+import com.joshy.cart2go.backend.ProductAdapter;
+import com.joshy.cart2go.backend.ProductService;
+import com.joshy.cart2go.backend.RetrofitClient;
+
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Locale;
 
 import retrofit2.Call;
 import retrofit2.Callback;

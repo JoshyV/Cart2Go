@@ -1,39 +1,57 @@
 package com.joshy.cart2go;
 
-import android.os.*;
+import android.content.SharedPreferences;
+import android.os.Bundle;
 import android.view.View;
-import android.view.animation.Animation;
 import android.widget.*;
 import androidx.appcompat.app.*;
 import androidx.cardview.widget.CardView;
-
 import android.content.Intent;
-
 
 public class MainActivity extends AppCompatActivity {
 
-    CardView addpbutton,listpbutton;
+    CardView addpbutton, listpbutton, adminpbutton,settingspbutton;
+    TextView itemscount;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-        //Add Product Start
+        SharedPreferences userdata = getSharedPreferences("userdata", MODE_PRIVATE);
+        int countitem = 1;
+        int Admincheck = userdata.getInt("AdminCheck", 0);
+        int AddPCheck = userdata.getInt("AddProductCheck", 0);
+        int ProdListCheck = userdata.getInt("ProductListCheck", 0);
         addpbutton = findViewById(R.id.addpbutton);
-        addpbutton.setOnClickListener(new android.view.View.OnClickListener() {
+        listpbutton = findViewById(R.id.listpbutton);
+        adminpbutton = findViewById(R.id.adminpbutton);
+        settingspbutton = findViewById(R.id.settingspbutton);
+        itemscount = findViewById(R.id.itemscount);
+
+
+        adminpbutton.setVisibility(Admincheck == 0 ? View.GONE : View.VISIBLE);
+        addpbutton.setVisibility(AddPCheck == 0 ? View.GONE : View.VISIBLE);
+        listpbutton.setVisibility(ProdListCheck == 0 ? View.GONE : View.VISIBLE);
+
+        countitem += (Admincheck == 1) ? 1 : 0;
+        countitem += (AddPCheck == 1) ? 1 : 0;
+        countitem += (ProdListCheck == 1) ? 1 : 0;
+
+        itemscount.setText(String.valueOf(countitem) + " Items");
+
+        // Add Product Start
+        addpbutton.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(android.view.View view) {
+            public void onClick(View view) {
                 Intent intent = new Intent(getApplicationContext(), Add_Product.class);
                 startActivity(intent);
                 overridePendingTransition(0, 0);
                 finish();
             }
         });
-        //Add Product End
+        // Add Product End
 
-
-        //Product List
-        listpbutton = findViewById(R.id.listpbutton);
+        // Product List
         listpbutton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -44,7 +62,57 @@ public class MainActivity extends AppCompatActivity {
 
             }
         });
-        //Product List End
+        // Product List End
 
+        // Admin Panel
+        adminpbutton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(), Admin_Panel.class);
+                startActivity(intent);
+                overridePendingTransition(0, 0);
+                finish();
+
+            }
+        });
+        // Admin Panel End
+
+        // Settings Panel
+        settingspbutton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(), Settings_Panel.class);
+                startActivity(intent);
+                overridePendingTransition(0, 0);
+                finish();
+
+            }
+        });
+        // Settings End
+
+        // Update layout params based on visibility
+        updateLayoutParams(adminpbutton, Admincheck == 0);
+        updateLayoutParams(addpbutton, AddPCheck == 0);
+        updateLayoutParams(listpbutton, ProdListCheck == 0);
+        updateLayoutParams(settingspbutton, false);
+
+    }
+
+    private void updateLayoutParams(CardView cardView, boolean isGone) {
+        GridLayout.LayoutParams params = (GridLayout.LayoutParams) cardView.getLayoutParams();
+        if (isGone) {
+            params.width = 0;
+            params.height = 0;
+            params.setMargins(0, 0, 0, 0);
+            params.columnSpec = GridLayout.spec(GridLayout.UNDEFINED, 0);
+            params.rowSpec = GridLayout.spec(GridLayout.UNDEFINED, 0);
+        } else {
+            params.width = GridLayout.LayoutParams.WRAP_CONTENT;
+            params.height = GridLayout.LayoutParams.WRAP_CONTENT;
+            params.setMargins(35, 12, 40, 12);
+            params.columnSpec = GridLayout.spec(GridLayout.UNDEFINED, 1);
+            params.rowSpec = GridLayout.spec(GridLayout.UNDEFINED, 1);
+        }
+        cardView.setLayoutParams(params);
     }
 }

@@ -9,6 +9,10 @@ import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.joshy.cart2go.backend.Product;
+import com.joshy.cart2go.backend.ProductService;
+import com.joshy.cart2go.backend.RetrofitClient;
+
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -35,7 +39,7 @@ public class Add_Product extends AppCompatActivity {
         variantcheck = findViewById(R.id.vcheckbox);
         volumecheck = findViewById(R.id.vlcheckbox);
         descriptioncheck = findViewById(R.id.descheckbox);
-        // Assuming you have a button to add the product, add an OnClickListener to it
+        
         findViewById(R.id.addProductButton).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -54,17 +58,14 @@ public class Add_Product extends AppCompatActivity {
     }
 
     private void addProduct() {
-        // Get the text from the EditText fields
         String barcodeText = String.valueOf(barcode.getText());
         String brandText = brand.getText().toString();
         String variantText = variant.getText().toString();
         String volumeText = volume.getText().toString();
         String descriptionText = description.getText().toString();
 
-        // Create a new Product object with the entered details
         Product newProduct = new Product(barcodeText, brandText, variantText, volumeText, descriptionText);
 
-        // Call the addProduct method of ProductService to add the new product
         ProductService productService = RetrofitClient.getClient().create(ProductService.class);
         Call<Void> addCall = productService.addProduct(newProduct);
         addCall.enqueue(new Callback<Void>() {
@@ -93,6 +94,6 @@ public class Add_Product extends AppCompatActivity {
 
     private void goBack() {
         startActivity(new Intent(this, MainActivity.class));
-        finish(); // Finish the current activity to prevent going back to it when pressing back button
+        finish();
     }
 }
