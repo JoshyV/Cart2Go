@@ -8,6 +8,7 @@ public class Product {
     private String variant;
     private String volume;
     private String description;
+
     @SerializedName("token")
     private String token;
 
@@ -64,6 +65,7 @@ public class Product {
     public void setDescription(String description) {
         this.description = description;
     }
+
 
     public static class LoginRequest {
         private String username;

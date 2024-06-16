@@ -1,5 +1,7 @@
 package com.joshy.cart2go.backend;
 
+import java.io.IOException;
+
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import retrofit2.Retrofit;
@@ -10,17 +12,10 @@ public class RetrofitClient {
     private static final String BASE_URL = "https://c2g.dev/";
     private static Retrofit retrofit;
 
-    public static Retrofit getClient() {
+    public static Retrofit getClient(String token) {
         if (retrofit == null) {
             OkHttpClient.Builder httpClient = new OkHttpClient.Builder();
-            httpClient.addInterceptor(chain -> {
-                Request original = chain.request();
-                Request.Builder requestBuilder = original.newBuilder()
-                        .header("Authorization", " 4a6991e578554757df7656ac3ac44b73eb9be43a54e9835fdd0444805fd346f29497c5b46a81e484f9598c915200e9fd3fc9b74a6f1e0e0798cdd0879a33439b")
-                        .header("Content-Type", " application/json");
-                Request request = requestBuilder.build();
-                return chain.proceed(request);
-            });
+            httpClient.addInterceptor(new AuthInterceptor(token));
 
             retrofit = new Retrofit.Builder()
                     .baseUrl(BASE_URL)
@@ -29,5 +24,23 @@ public class RetrofitClient {
                     .build();
         }
         return retrofit;
+    }
+
+    public static class AuthInterceptor implements okhttp3.Interceptor {
+        private String token;
+
+        public AuthInterceptor(String token) {
+            this.token = token;
+        }
+
+        @Override
+        public okhttp3.Response intercept(Chain chain) throws IOException {
+            Request original = chain.request();
+            Request.Builder requestBuilder = original.newBuilder()
+                    .header("Authorization", " " + token)
+                    .header("Content-Type", "multipart/form-data");
+            Request request = requestBuilder.build();
+            return chain.proceed(request);
+        }
     }
 }

@@ -13,8 +13,9 @@ public interface ProductService {
     @GET("/products")
     Call<List<Product>> getProducts();
 
+    @Multipart
     @POST("/product")
-    Call<Void> addProduct(@Body Product product);
+    Call<Void> addProduct(@Part("product")RequestBody product, @Part MultipartBody.Part image);
 
     @PUT("/products/{id}")
     Call<Void> updateProduct(@Path("id") String id, @Body Product product);
