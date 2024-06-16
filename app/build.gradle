@@ -46,4 +46,5 @@ dependencies {
     implementation 'org.java-websocket:Java-WebSocket:1.5.2'
     implementation 'com.squareup.okhttp3:logging-interceptor:4.9.1'
     implementation 'commons-io:commons-io:2.11.0'
+    implementation "com.squareup.picasso:picasso:2.4.0"
 }

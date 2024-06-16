@@ -8,6 +8,7 @@ public class Product {
     private String variant;
     private String volume;
     private String description;
+    private String image;
 
     @SerializedName("token")
     private String token;
@@ -40,6 +41,10 @@ public class Product {
 
     public String getDescription() {
         return description;
+    }
+
+    public String getImage() {
+        return image;
     }
 
     public String getToken() {

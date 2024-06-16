@@ -24,6 +24,7 @@ public class ProductDetailActivity extends AppCompatActivity {
         String variant = intent.getStringExtra("variant");
         String volume = intent.getStringExtra("volume");
         String description = intent.getStringExtra("description");
+        String imageurl = intent.getStringExtra("image");
 
         // Display product details in TextViews
         TextView BarcodeTextView = findViewById(R.id.text_bracode);
@@ -32,7 +33,7 @@ public class ProductDetailActivity extends AppCompatActivity {
         TextView volumeTextView = findViewById(R.id.text_volume);
         TextView descriptionTextView = findViewById(R.id.text_description);
 
-        BarcodeTextView.setText(barcode);
+        BarcodeTextView.setText(imageurl);
         brandTextView.setText("Brand: " + brand);
         VariantTextView.setText("Variant: " + variant);
         volumeTextView.setText("Volume: " + volume);
