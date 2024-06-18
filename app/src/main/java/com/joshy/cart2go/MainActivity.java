@@ -10,7 +10,7 @@ import android.content.Intent;
 
 public class MainActivity extends AppCompatActivity {
 
-    CardView addpbutton, listpbutton, adminpbutton,settingspbutton;
+    CardView addpbutton, listpbutton, adminpbutton,settingspbutton,addInventorybutton,inventorybutton;
     TextView itemscount;
 
     @Override
@@ -22,20 +22,29 @@ public class MainActivity extends AppCompatActivity {
         int Admincheck = userdata.getInt("AdminCheck", 0);
         int AddPCheck = userdata.getInt("AddProductCheck", 0);
         int ProdListCheck = userdata.getInt("ProductListCheck", 0);
+        int AddInvCheck = userdata.getInt("AddInventoryCheck", 0);
+        int InvCheck = userdata.getInt("InventoryCheck", 0);
         addpbutton = findViewById(R.id.addpbutton);
         listpbutton = findViewById(R.id.listpbutton);
         adminpbutton = findViewById(R.id.adminpbutton);
         settingspbutton = findViewById(R.id.settingspbutton);
+        addInventorybutton = findViewById(R.id.addInventorybutton);
+        inventorybutton = findViewById(R.id.inventorybutton);
         itemscount = findViewById(R.id.itemscount);
 
 
         adminpbutton.setVisibility(Admincheck == 0 ? View.GONE : View.VISIBLE);
         addpbutton.setVisibility(AddPCheck == 0 ? View.GONE : View.VISIBLE);
         listpbutton.setVisibility(ProdListCheck == 0 ? View.GONE : View.VISIBLE);
+        addInventorybutton.setVisibility(AddInvCheck == 0 ? View.GONE : View.VISIBLE);
+        inventorybutton.setVisibility(InvCheck == 0 ? View.GONE : View.VISIBLE);
 
         countitem += (Admincheck == 1) ? 1 : 0;
         countitem += (AddPCheck == 1) ? 1 : 0;
         countitem += (ProdListCheck == 1) ? 1 : 0;
+        countitem += (AddInvCheck == 1) ? 1 : 0;
+        countitem += (InvCheck == 1) ? 1 : 0;
+
 
         itemscount.setText(String.valueOf(countitem) + " Items");
 
@@ -94,6 +103,8 @@ public class MainActivity extends AppCompatActivity {
         updateLayoutParams(adminpbutton, Admincheck == 0);
         updateLayoutParams(addpbutton, AddPCheck == 0);
         updateLayoutParams(listpbutton, ProdListCheck == 0);
+        updateLayoutParams(addInventorybutton, AddInvCheck == 0);
+        updateLayoutParams(inventorybutton, InvCheck == 0);
         updateLayoutParams(settingspbutton, false);
 
     }

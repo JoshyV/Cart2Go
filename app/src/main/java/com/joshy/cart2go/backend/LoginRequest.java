@@ -1,4 +1,4 @@
-package com.joshy.cart2go;
+package com.joshy.cart2go.backend;
 
 import com.google.gson.annotations.SerializedName;
 
@@ -44,6 +44,10 @@ public class LoginRequest {
             private int addproduct;
             @SerializedName("productlist")
             private int productlist;
+            @SerializedName("addinventory")
+            private int addinventory;
+            @SerializedName("inventory")
+            private int inventory;
             @SerializedName("username")
             private String username;
 
@@ -62,6 +66,14 @@ public class LoginRequest {
 
             public int getProductlist() {
                 return productlist;
+            }
+
+            public int getaddInventory() {
+                return addinventory;
+            }
+
+            public int getInventory() {
+                return inventory;
             }
 
             public String getUsername() {

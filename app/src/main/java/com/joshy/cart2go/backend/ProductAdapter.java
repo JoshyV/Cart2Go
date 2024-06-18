@@ -44,7 +44,7 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ViewHold
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
-        TextView BarcodeDetail,BrandDetail,VairantDetail,DescriptionDetail;
+        TextView BarcodeDetail,BrandDetail,VairantDetail,VolumeDetail;
         CardView cardView;
         Product clickedProduct;
         ImageView ItemPreview;
@@ -54,7 +54,7 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ViewHold
             BarcodeDetail = itemView.findViewById(R.id.BarcodeDetail);
             BrandDetail = itemView.findViewById(R.id.BrandDetail);
             VairantDetail = itemView.findViewById(R.id.VariantDetail);
-            DescriptionDetail = itemView.findViewById(R.id.DescriptionDetail);
+            VolumeDetail = itemView.findViewById(R.id.VolumeDetail);
             ItemPreview = itemView.findViewById(R.id.ItemPreview);
             cardView = itemView.findViewById(R.id.card_view);
             cardView.setOnClickListener(this);
@@ -81,7 +81,7 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ViewHold
             BarcodeDetail.setText(product.getBarcode());
             BrandDetail.setText(product.getBrand());
             VairantDetail.setText(product.getVariant());
-            DescriptionDetail.setText(product.getDescription());
+            VolumeDetail.setText(product.getVolume());
         }
     }
 

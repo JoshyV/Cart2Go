@@ -38,7 +38,7 @@
             android:layout_marginEnd="10dp"
             tools:srcCompat="@tools:sample/avatars" />
              <GridLayout
-                 android:layout_width="match_parent"
+                 android:layout_columnWeight="1"
                  android:layout_height="wrap_content"
                  android:alignmentMode="alignMargins"
                  android:columnCount="1"
@@ -68,7 +68,7 @@
                      android:textColor="#6f6f6f"
                      android:textSize="18sp" />
                  <TextView
-                     android:id="@+id/DescriptionDetail"
+                     android:id="@+id/VolumeDetail"
                      android:layout_width="wrap_content"
                      android:layout_height="wrap_content"
                      android:layout_marginTop="3dp"

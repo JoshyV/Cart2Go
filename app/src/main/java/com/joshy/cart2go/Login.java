@@ -11,6 +11,7 @@ import android.widget.EditText;
 import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.joshy.cart2go.backend.LoginRequest;
 import com.joshy.cart2go.backend.ProductService;
 import com.joshy.cart2go.backend.RetrofitClient;
 
@@ -57,6 +58,8 @@ public class Login extends AppCompatActivity {
                                 editor.putInt("AdminCheck", user.getAdmin());
                                 editor.putInt("AddProductCheck", user.getAddproduct());
                                 editor.putInt("ProductListCheck", user.getProductlist());
+                                editor.putInt("AddInventoryCheck", user.getaddInventory());
+                                editor.putInt("InventoryCheck", user.getInventory());
                                 editor.apply();
                               //usernameEditText.setText(String.valueOf(user.getAdmin()+" "+user.getAddproduct()+" "+user.getProductlist()));
                                 Intent intent = new Intent(Login.this, MainActivity.class);
@@ -122,6 +125,8 @@ public class Login extends AppCompatActivity {
                         editor.putInt("AdminCheck", user.getAdmin());
                         editor.putInt("AddProductCheck", user.getAddproduct());
                         editor.putInt("ProductListCheck", user.getProductlist());
+                        editor.putInt("AddInventoryCheck", user.getaddInventory());
+                        editor.putInt("InventoryCheck", user.getInventory());
                         editor.apply();
 
                         Intent intent = new Intent(Login.this, MainActivity.class);

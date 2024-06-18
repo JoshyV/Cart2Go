@@ -25,8 +25,18 @@
         android:theme="@style/Theme.Cart2Go"
         tools:targetApi="33">
         <activity
-            android:name=".Settings_Panel"
+            android:name=".Add_IInventory"
             android:exported="false" />
+        <activity
+            android:name=".backend.AddProductEdit"
+            android:exported="true"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.Design.Light.NoActionBar" />
+        <activity
+            android:name=".Settings_Panel"
+            android:exported="true"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.Design.Light.NoActionBar" />
         <activity
             android:name=".Admin_Panel"
             android:exported="false" />
@@ -61,6 +71,12 @@
             android:exported="true"
             android:screenOrientation="portrait"
             android:theme="@style/Theme.Design.Light.NoActionBar" />
+        <activity
+            android:name=".backend.CaptureAct"
+            android:exported="true"
+            android:screenOrientation="portrait"
+            android:theme="@style/zxing_CaptureTheme" />
+
         <provider
             android:name="androidx.core.content.FileProvider"
             android:authorities="com.joshy.cart2go.fileprovider"
@@ -68,7 +84,8 @@
             android:grantUriPermissions="true">
             <meta-data
                 android:name="android.support.FILE_PROVIDER_PATHS"
-                android:resource="@xml/file_paths"/>
+                android:resource="@xml/file_paths" />
         </provider>
     </application>
+
 </manifest>

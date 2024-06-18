@@ -1,7 +1,5 @@
 package com.joshy.cart2go.backend;
 
-import com.joshy.cart2go.LoginRequest;
-
 import java.util.List;
 
 import okhttp3.MultipartBody;
