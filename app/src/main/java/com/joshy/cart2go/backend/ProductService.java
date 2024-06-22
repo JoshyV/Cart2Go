@@ -24,8 +24,11 @@ public interface ProductService {
     @GET("/getUpdates")
     Call<List<Product>> getUpdates();
 
-    @GET("/search")
+    @GET("/searchbrand")
     Call<List<Product>> searchProducts(@Query("brand") String brand);
+
+    @GET("/searchbarcode")
+    Call<List<Product>> searchBarcode(@Query("barcode") String barcode);
 
     @POST("/login")
     Call<LoginRequest.Response> login(@Body LoginRequest.Request request);

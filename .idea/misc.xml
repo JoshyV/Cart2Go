@@ -7,17 +7,20 @@
         <entry key="..\:/projects/Cart2Go2/app/src/main/res/drawable/ic_baseline_create_24.xml" value="0.178" />
         <entry key="..\:/projects/Cart2Go2/app/src/main/res/drawable/ic_baseline_storage_24.xml" value="0.178" />
         <entry key="..\:/projects/Cart2Go2/app/src/main/res/layout/activity_add_iinventory.xml" value="0.27291666666666664" />
+        <entry key="..\:/projects/Cart2Go2/app/src/main/res/layout/activity_add_inventory.xml" value="0.22698524244553758" />
         <entry key="..\:/projects/Cart2Go2/app/src/main/res/layout/activity_add_product.xml" value="0.33" />
         <entry key="..\:/projects/Cart2Go2/app/src/main/res/layout/activity_add_product_edit.xml" value="0.33" />
         <entry key="..\:/projects/Cart2Go2/app/src/main/res/layout/activity_admin_panel.xml" value="0.2015625" />
+        <entry key="..\:/projects/Cart2Go2/app/src/main/res/layout/activity_generate_crate.xml" value="0.1929084001688476" />
         <entry key="..\:/projects/Cart2Go2/app/src/main/res/layout/activity_list_product.xml" value="0.33" />
         <entry key="..\:/projects/Cart2Go2/app/src/main/res/layout/activity_login.xml" value="0.240625" />
-        <entry key="..\:/projects/Cart2Go2/app/src/main/res/layout/activity_main.xml" value="0.30337078651685395" />
+        <entry key="..\:/projects/Cart2Go2/app/src/main/res/layout/activity_main.xml" value="0.3136344449134656" />
         <entry key="..\:/projects/Cart2Go2/app/src/main/res/layout/activity_product_detail.xml" value="0.67" />
         <entry key="..\:/projects/Cart2Go2/app/src/main/res/layout/activity_settings_panel.xml" value="0.27395833333333336" />
+        <entry key="..\:/projects/Cart2Go2/app/src/main/res/layout/add_product.xml" value="0.17679558011049723" />
         <entry key="..\:/projects/Cart2Go2/app/src/main/res/layout/fragment_login.xml" value="0.2546875" />
         <entry key="..\:/projects/Cart2Go2/app/src/main/res/layout/item_product.xml" value="0.22" />
-        <entry key="..\:/projects/Cart2Go2/app/src/main/res/layout/test.xml" value="0.22" />
+        <entry key="..\:/projects/Cart2Go2/app/src/main/res/layout/test.xml" value="0.29935125115848005" />
         <entry key="..\:/projects/Cart2Go2/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.178" />
         <entry key="..\:/projects/Cart2Go2/app/src/main/res/xml/file_paths.xml" value="0.20052083333333334" />
       </map>

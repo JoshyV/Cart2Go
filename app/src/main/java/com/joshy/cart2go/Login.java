@@ -60,6 +60,7 @@ public class Login extends AppCompatActivity {
                                 editor.putInt("ProductListCheck", user.getProductlist());
                                 editor.putInt("AddInventoryCheck", user.getaddInventory());
                                 editor.putInt("InventoryCheck", user.getInventory());
+                                editor.putInt("GenerateCheck", user.getGenerateCrate());
                                 editor.apply();
                               //usernameEditText.setText(String.valueOf(user.getAdmin()+" "+user.getAddproduct()+" "+user.getProductlist()));
                                 Intent intent = new Intent(Login.this, MainActivity.class);
@@ -127,6 +128,7 @@ public class Login extends AppCompatActivity {
                         editor.putInt("ProductListCheck", user.getProductlist());
                         editor.putInt("AddInventoryCheck", user.getaddInventory());
                         editor.putInt("InventoryCheck", user.getInventory());
+                        editor.putInt("GenerateCheck", user.getGenerateCrate());
                         editor.apply();
 
                         Intent intent = new Intent(Login.this, MainActivity.class);

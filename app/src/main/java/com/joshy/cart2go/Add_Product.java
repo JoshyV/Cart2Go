@@ -5,12 +5,9 @@ import androidx.activity.result.ActivityResultCallback;
 import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.RequiresApi;
-import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.Activity;
-import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.database.Cursor;
 import android.graphics.Bitmap;
@@ -20,8 +17,8 @@ import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.provider.MediaStore;
+import android.util.Log;
 import android.view.View;
-import android.widget.CheckBox;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -29,7 +26,6 @@ import android.widget.Toast;
 import com.google.gson.Gson;
 import com.joshy.cart2go.backend.AddProductEdit;
 import com.joshy.cart2go.backend.CaptureAct;
-import com.joshy.cart2go.backend.JoshEncrypter;
 import com.joshy.cart2go.backend.Product;
 import com.joshy.cart2go.backend.ProductService;
 import com.joshy.cart2go.backend.RetrofitClient;
@@ -38,6 +34,7 @@ import com.journeyapps.barcodescanner.ScanOptions;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
+import java.util.List;
 
 import okhttp3.MediaType;
 import okhttp3.MultipartBody;
@@ -45,6 +42,7 @@ import okhttp3.RequestBody;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
+import retrofit2.Retrofit;
 
 @RequiresApi(api = Build.VERSION_CODES.O)
 public class Add_Product extends AppCompatActivity {
@@ -55,11 +53,10 @@ public class Add_Product extends AppCompatActivity {
     private TextView barcode, brand, variant, volume, description;
     boolean brandcheck, variantcheck, volumecheck, descriptioncheck;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_add_product);
+        setContentView(R.layout.add_product);
         imagepreview = (ImageView) findViewById(R.id.imagepreview);
         barcode = findViewById(R.id.BarcodeDetail);
         brand = findViewById(R.id.BrandDetail);
@@ -181,13 +178,31 @@ public class Add_Product extends AppCompatActivity {
 
     ActivityResultLauncher<ScanOptions> barLauncher = registerForActivityResult(new ScanContract(), result->{
         if(result.getContents() != null){
-            barcode.setText(result.getContents());
-            AlertDialog.Builder builder = new AlertDialog.Builder(Add_Product.this);
-            builder.setTitle("Scan Result");
-            builder.setMessage(JoshEncrypter.encode(result.getContents()));
-            builder.setPositiveButton("OK", (dialogInterface, i) -> {
-                dialogInterface.dismiss();
-            }).show();
+            Retrofit retrofit = RetrofitClient.getClient("4a6991e578554757df7656ac3ac44b73eb9be43a54e9835fdd0444805fd346f29497c5b46a81e484f9598c915200e9fd3fc9b74a6f1e0e0798cdd0879a33439b");
+            ProductService service = retrofit.create(ProductService.class);
+            Call<List<Product>> call = service.searchBarcode(result.getContents());
+            call.enqueue(new Callback<List<Product>>() {
+                @Override
+                public void onResponse(Call<List<Product>> call, Response<List<Product>> response) {
+                    if (response.isSuccessful()) {
+                        List<Product> searchResults = response.body();
+                        if (searchResults.isEmpty()) {
+                            barcode.setText(result.getContents());
+                        }else{
+                            Toast.makeText(getApplicationContext(), "Product already registered", Toast.LENGTH_SHORT).show();
+                        }
+                    } else {
+                        Toast.makeText(getApplicationContext(), "Failed to catch the product", Toast.LENGTH_SHORT).show();
+                    }
+                }
+                @Override
+                public void onFailure(Call<List<Product>> call, Throwable t) {
+                    // Handle failure
+                    Toast.makeText(getApplicationContext(), "Error! " + t.getMessage(), Toast.LENGTH_LONG).show();
+                    Log.e("TAG", "Error message: " + t.getMessage());
+                    t.printStackTrace();
+                }
+            });
         }
     });
     public String getRealPathFromURI(Uri uri) {

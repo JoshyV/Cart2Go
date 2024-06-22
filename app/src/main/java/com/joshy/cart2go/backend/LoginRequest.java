@@ -48,6 +48,8 @@ public class LoginRequest {
             private int addinventory;
             @SerializedName("inventory")
             private int inventory;
+            @SerializedName("generatecrate")
+            private int generatecrate;
             @SerializedName("username")
             private String username;
 
@@ -74,6 +76,10 @@ public class LoginRequest {
 
             public int getInventory() {
                 return inventory;
+            }
+
+            public int getGenerateCrate() {
+                return generatecrate;
             }
 
             public String getUsername() {

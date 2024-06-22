@@ -45,7 +45,7 @@ public class List_Product extends AppCompatActivity {
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
         // Start polling for updates
-        recyclerView.postDelayed(pollingRunnable, 5000);
+        recyclerView.postDelayed(pollingRunnable, 1000);
 
         // Set up search functionality
         setupSearchView();
@@ -75,7 +75,7 @@ public class List_Product extends AppCompatActivity {
                 if (newText.isEmpty()) {
                     // Start polling for updates when search bar becomes empty
                     recyclerView.removeCallbacks(pollingRunnable); // Remove any pending callbacks
-                    recyclerView.postDelayed(pollingRunnable, 5000); // Start polling
+                    recyclerView.postDelayed(pollingRunnable, 1000); // Start polling
                 }else{
                     searchProducts(newText);
                     recyclerView.removeCallbacks(pollingRunnable);

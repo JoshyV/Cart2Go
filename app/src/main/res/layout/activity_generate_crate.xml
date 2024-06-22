@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Generate_Crate">
+    <LinearLayout
+        android:id="@+id/MainLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="top"
+        android:orientation="vertical"
+        android:padding="16dp">
+
+    <TextView
+        android:id="@+id/branding"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:fontFamily="@font/poppinsbold"
+        android:gravity="center"
+        android:text="Cart2Go"
+        android:textColor="#FF5722"
+        android:textSize="30sp" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:padding="16dp">
+        <ImageView
+            android:id="@+id/barcodeHolder"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:srcCompat="@drawable/placeholder" />
+        <TextView
+            android:id="@+id/cratenumber"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:hint="Crate"
+            android:text="Crate"
+            android:textColor="#6f6f6f"
+            android:textSize="18sp" />
+        <TextView
+            android:id="@+id/CodeText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:hint="Code"
+            android:text="Code"
+            android:textColor="#6f6f6f"
+            android:textSize="18sp" />
+    </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="10dp"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:padding="5dp">
+
+            <GridLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:alignmentMode="alignMargins"
+                android:columnCount="2"
+                android:columnOrderPreserved="false"
+                android:rowCount="2">
+
+                <Button
+                    android:id="@+id/copycode"
+                    android:layout_width="150dp"
+                    android:layout_height="wrap_content"
+                    android:layout_column="0"
+                    android:layout_columnWeight="1"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginEnd="12dp"
+                    android:background="@drawable/custom_button"
+                    android:text="Copy Code"
+                    android:textColor="#FFFFFF" />
+                <Button
+                    android:id="@+id/DownloadQR"
+                    android:layout_width="150dp"
+                    android:layout_height="wrap_content"
+                    android:layout_column="0"
+                    android:layout_row="1"
+                    android:layout_columnWeight="1"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginEnd="12dp"
+                    android:layout_marginTop="12dp"
+                    android:background="@drawable/custom_button"
+                    android:text="Download QR"
+                    android:textColor="#FFFFFF"/>
+
+                <Button
+                    android:id="@+id/GenerateBarcode"
+                    android:layout_width="150dp"
+                    android:layout_height="wrap_content"
+                    android:layout_row="0"
+                    android:layout_column="1"
+                    android:layout_columnWeight="1"
+                    android:layout_gravity="center_horizontal"
+                    android:background="@drawable/custom_button"
+                    android:text="Generate QR"
+                    android:textColor="#FFFFFF" />
+
+
+            </GridLayout>
+
+        </LinearLayout>
+    </LinearLayout>
+
+</RelativeLayout>

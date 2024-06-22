@@ -1,16 +1,19 @@
 package com.joshy.cart2go;
 
 import android.content.SharedPreferences;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.*;
+
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.*;
 import androidx.cardview.widget.CardView;
 import android.content.Intent;
 
 public class MainActivity extends AppCompatActivity {
 
-    CardView addpbutton, listpbutton, adminpbutton,settingspbutton,addInventorybutton,inventorybutton;
+    CardView addpbutton, listpbutton, adminpbutton,settingspbutton,addInventorybutton,inventorybutton,Generate_Crate;
     TextView itemscount;
 
     @Override
@@ -24,12 +27,14 @@ public class MainActivity extends AppCompatActivity {
         int ProdListCheck = userdata.getInt("ProductListCheck", 0);
         int AddInvCheck = userdata.getInt("AddInventoryCheck", 0);
         int InvCheck = userdata.getInt("InventoryCheck", 0);
+        int GenCheck = userdata.getInt("GenerateCheck", 0);
         addpbutton = findViewById(R.id.addpbutton);
         listpbutton = findViewById(R.id.listpbutton);
         adminpbutton = findViewById(R.id.adminpbutton);
         settingspbutton = findViewById(R.id.settingspbutton);
         addInventorybutton = findViewById(R.id.addInventorybutton);
         inventorybutton = findViewById(R.id.inventorybutton);
+        Generate_Crate = findViewById(R.id.Generate_Crate);
         itemscount = findViewById(R.id.itemscount);
 
 
@@ -38,18 +43,21 @@ public class MainActivity extends AppCompatActivity {
         listpbutton.setVisibility(ProdListCheck == 0 ? View.GONE : View.VISIBLE);
         addInventorybutton.setVisibility(AddInvCheck == 0 ? View.GONE : View.VISIBLE);
         inventorybutton.setVisibility(InvCheck == 0 ? View.GONE : View.VISIBLE);
+        Generate_Crate.setVisibility(InvCheck == 0 ? View.GONE : View.VISIBLE);
 
         countitem += (Admincheck == 1) ? 1 : 0;
         countitem += (AddPCheck == 1) ? 1 : 0;
         countitem += (ProdListCheck == 1) ? 1 : 0;
         countitem += (AddInvCheck == 1) ? 1 : 0;
         countitem += (InvCheck == 1) ? 1 : 0;
+        countitem += (GenCheck == 1) ? 1 : 0;
 
 
         itemscount.setText(String.valueOf(countitem) + " Items");
 
         // Add Product Start
         addpbutton.setOnClickListener(new View.OnClickListener() {
+            @RequiresApi(api = Build.VERSION_CODES.O)
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(getApplicationContext(), Add_Product.class);
@@ -99,12 +107,40 @@ public class MainActivity extends AppCompatActivity {
         });
         // Settings End
 
+        // Inventory Panel
+        addInventorybutton.setOnClickListener(new View.OnClickListener() {
+            @RequiresApi(api = Build.VERSION_CODES.O)
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(), Add_Inventory.class);
+                startActivity(intent);
+                overridePendingTransition(0, 0);
+                finish();
+
+            }
+        });
+        // Inventory End
+
+        // Settings Panel
+        Generate_Crate.setOnClickListener(new View.OnClickListener() {
+            @RequiresApi(api = Build.VERSION_CODES.O)
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(), Generate_Crate.class);
+                startActivity(intent);
+                overridePendingTransition(0, 0);
+                finish();
+            }
+        });
+        // Settings End
+
         // Update layout params based on visibility
         updateLayoutParams(adminpbutton, Admincheck == 0);
         updateLayoutParams(addpbutton, AddPCheck == 0);
         updateLayoutParams(listpbutton, ProdListCheck == 0);
         updateLayoutParams(addInventorybutton, AddInvCheck == 0);
         updateLayoutParams(inventorybutton, InvCheck == 0);
+        updateLayoutParams(Generate_Crate, GenCheck == 0);
         updateLayoutParams(settingspbutton, false);
 
     }

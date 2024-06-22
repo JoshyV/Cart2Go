@@ -5,8 +5,6 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".Add_Inventory">
-
-
     <LinearLayout
         android:id="@+id/MainLayout"
         android:layout_width="match_parent"
@@ -26,94 +24,86 @@
             android:textColor="#FF5722"
             android:textSize="30sp" />
 
-        <GridLayout
-            android:id="@+id/GridLayout"
+        <TextView
+            android:id="@+id/barcodeINV"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:alignmentMode="alignMargins"
-            android:columnCount="2"
-            android:columnOrderPreserved="false"
-            android:rowCount="1">
-
-            <ImageView
-                android:layout_width="150dp"
-                android:layout_height="150dp"
-                android:layout_marginEnd="10dp"
-                android:layout_column="0"
-                app:srcCompat="@mipmap/ic_launcher_round" />
-
-            <LinearLayout
-                android:layout_height="wrap_content"
-                android:layout_row="0"
-                android:layout_column="1"
-                android:layout_columnWeight="1"
-                android:gravity="center"
-                android:orientation="vertical"
-                android:padding="19dp">
-
-                <TextView
-                    android:id="@+id/BarcodeDetail"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Barcode"
-                    android:textColor="#6f6f6f"
-                    android:textSize="18sp" />
-
-                <TextView
-                    android:id="@+id/BrandDetail"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="5dp"
-                    android:text="Brand"
-                    android:textColor="#6f6f6f"
-                    android:textSize="18sp" />
-
-                <TextView
-                    android:id="@+id/VariantDetail"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="5dp"
-                    android:text="Variant"
-                    android:textColor="#6f6f6f"
-                    android:textSize="18sp" />
-
-                <TextView
-                    android:id="@+id/VolumeDetail"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="5dp"
-                    android:text="Volume"
-                    android:textColor="#6f6f6f"
-                    android:textSize="18sp" />
-            </LinearLayout>
-
-        </GridLayout>
-
+            android:gravity="center"
+            android:text="Barcode"
+            android:textSize="25sp" />
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:gravity="center"
-            android:orientation="vertical"
-            android:padding="5dp">
-
-            <TextView
-                android:id="@+id/DescriptionDetail"
-                android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+            <GridLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="5dp"
-                android:text="Description"
-                android:textColor="#6f6f6f"
-                android:textSize="18sp" />
-
-            <TextView
-                android:id="@+id/ExpiryDetails"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="5dp"
-                android:text="Expiry Date"
-                android:textColor="#6f6f6f"
-                android:textSize="18sp" />
+                android:columnOrderPreserved="false"
+                android:alignmentMode="alignMargins"
+                android:columnCount="2"
+                android:rowCount="1">
+                <ImageView
+                    android:id="@+id/imageINV"
+                    android:layout_height="150dp"
+                    android:layout_width="150dp"
+                    android:layout_column="0"
+                    app:srcCompat="@mipmap/ic_launcher_round" />
+                <LinearLayout
+                    android:layout_height="wrap_content"
+                    android:layout_column="1"
+                    android:layout_columnWeight="1"
+                    android:gravity="left"
+                    android:orientation="vertical"
+                    android:padding="19dp">
+                    <TextView
+                    android:id="@+id/brandINV"
+                    android:layout_width="200dp"
+                    android:layout_height="wrap_content"
+                    android:textSize="18sp"
+                    android:textColor="#6f6f6f"
+                    android:hint="Brand"
+                    android:text="Brand"/>
+                    <TextView
+                        android:id="@+id/variantINV"
+                        android:layout_width="200dp"
+                        android:layout_height="wrap_content"
+                        android:textSize="18sp"
+                        android:textColor="#6f6f6f"
+                        android:hint="Variant"
+                        android:text="Variant"/>
+                    <TextView
+                        android:id="@+id/volumeINV"
+                        android:layout_width="200dp"
+                        android:layout_height="wrap_content"
+                        android:textSize="18sp"
+                        android:textColor="#6f6f6f"
+                        android:hint="Volume"
+                        android:text="Volume"/>
+                    <TextView
+                        android:id="@+id/expiryINV"
+                        android:layout_width="200dp"
+                        android:layout_height="wrap_content"
+                        android:textSize="18sp"
+                        android:textColor="#6f6f6f"
+                        android:hint="Expiry Date"
+                        android:text="Expiry Date"/>
+                    <TextView
+                        android:id="@+id/crateINV"
+                        android:layout_width="200dp"
+                        android:layout_height="wrap_content"
+                        android:textSize="18sp"
+                        android:textColor="#6f6f6f"
+                        android:hint="Crate"
+                        android:text="Crate"/>
+                </LinearLayout>
+            </GridLayout>
         </LinearLayout>
+        <TextView
+            android:id="@+id/descriptioINV"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="Description"
+            android:textSize="18sp" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -129,48 +119,59 @@
                 android:alignmentMode="alignMargins"
                 android:columnCount="2"
                 android:columnOrderPreserved="false"
-                android:rowCount="1">
+                android:rowCount="2">
 
                 <Button
                     android:id="@+id/BarcodeButton"
-                    android:layout_width="wrap_content"
+                    android:layout_width="150dp"
                     android:layout_height="wrap_content"
                     android:layout_column="0"
-                    android:layout_marginStart="50dp"
+                    android:layout_columnWeight="1"
+                    android:layout_gravity="center_horizontal"
                     android:layout_marginEnd="12dp"
                     android:background="@drawable/custom_button"
                     android:text="Barcode"
                     android:textColor="#FFFFFF" />
+                <Button
+                    android:id="@+id/ExpiryDateButton"
+                    android:layout_width="150dp"
+                    android:layout_height="wrap_content"
+                    android:layout_column="0"
+                    android:layout_row="1"
+                    android:layout_columnWeight="1"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginEnd="12dp"
+                    android:layout_marginTop="12dp"
+                    android:background="@drawable/custom_button"
+                    android:text="Expiry Date"
+                    android:textColor="#FFFFFF"/>
 
                 <Button
-                    android:id="@+id/Editbutton"
-                    android:layout_width="wrap_content"
+                    android:id="@+id/addProductButton"
+                    android:layout_width="150dp"
                     android:layout_height="wrap_content"
+                    android:layout_row="0"
                     android:layout_column="1"
-                    android:layout_marginStart="12dp"
-                    android:layout_marginEnd="50dp"
+                    android:layout_columnWeight="1"
+                    android:layout_gravity="center_horizontal"
                     android:background="@drawable/custom_button"
-                    android:text="Edit Details"
+                    android:text="Add product"
+                    android:textColor="#FFFFFF" />
+
+                <Button
+                    android:id="@+id/CaseButton"
+                    android:layout_width="150dp"
+                    android:layout_height="wrap_content"
+                    android:layout_row="1"
+                    android:layout_column="1"
+                    android:layout_columnWeight="1"
+                    android:layout_marginTop="12dp"
+                    android:layout_gravity="center_horizontal"
+                    android:background="@drawable/custom_button"
+                    android:text="Scan Crate"
                     android:textColor="#FFFFFF" />
             </GridLayout>
 
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginTop="15dp"
-            android:gravity="center"
-            android:orientation="horizontal">
-            <Button
-                android:id="@+id/addProductButton"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_column="1"
-
-                android:background="@drawable/custom_button"
-                android:text="Add product"
-                android:textColor="#FFFFFF" />
         </LinearLayout>
     </LinearLayout>
 </RelativeLayout>
