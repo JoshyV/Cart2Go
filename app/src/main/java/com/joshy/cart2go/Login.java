@@ -41,8 +41,6 @@ public class Login extends AppCompatActivity {
             public void onClick(View v) {
                 String username = usernameEditText.getText().toString();
                 String password = passwordEditText.getText().toString();
-
-                // Make network request to login endpoint
                 Call<LoginRequest.Response> call = productService.login(new LoginRequest.Request(username, password));
                 call.enqueue(new Callback<LoginRequest.Response>() {
                     @Override
@@ -53,7 +51,6 @@ public class Login extends AppCompatActivity {
                             if (message.equals("Login successful")) {
                                 LoginRequest.Response.User user = loginResponse.getUser();
 
-                                // Storing user data in SharedPreferences
                                 SharedPreferences.Editor editor = getSharedPreferences("userdata", MODE_PRIVATE).edit();
                                 editor.putInt("AdminCheck", user.getAdmin());
                                 editor.putInt("AddProductCheck", user.getAddproduct());
@@ -62,7 +59,6 @@ public class Login extends AppCompatActivity {
                                 editor.putInt("InventoryCheck", user.getInventory());
                                 editor.putInt("GenerateCheck", user.getGenerateCrate());
                                 editor.apply();
-                              //usernameEditText.setText(String.valueOf(user.getAdmin()+" "+user.getAddproduct()+" "+user.getProductlist()));
                                 Intent intent = new Intent(Login.this, MainActivity.class);
                                 startActivity(intent);
                                 finish();

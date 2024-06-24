@@ -6,7 +6,6 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.*;
 
-import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.*;
 import androidx.cardview.widget.CardView;
 import android.content.Intent;
@@ -43,7 +42,7 @@ public class MainActivity extends AppCompatActivity {
         listpbutton.setVisibility(ProdListCheck == 0 ? View.GONE : View.VISIBLE);
         addInventorybutton.setVisibility(AddInvCheck == 0 ? View.GONE : View.VISIBLE);
         inventorybutton.setVisibility(InvCheck == 0 ? View.GONE : View.VISIBLE);
-        Generate_Crate.setVisibility(InvCheck == 0 ? View.GONE : View.VISIBLE);
+        Generate_Crate.setVisibility(GenCheck == 0 ? View.GONE : View.VISIBLE);
 
         countitem += (Admincheck == 1) ? 1 : 0;
         countitem += (AddPCheck == 1) ? 1 : 0;
@@ -57,7 +56,6 @@ public class MainActivity extends AppCompatActivity {
 
         // Add Product Start
         addpbutton.setOnClickListener(new View.OnClickListener() {
-            @RequiresApi(api = Build.VERSION_CODES.O)
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(getApplicationContext(), Add_Product.class);
@@ -107,9 +105,8 @@ public class MainActivity extends AppCompatActivity {
         });
         // Settings End
 
-        // Inventory Panel
+        // Add Inventory Panel
         addInventorybutton.setOnClickListener(new View.OnClickListener() {
-            @RequiresApi(api = Build.VERSION_CODES.O)
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(getApplicationContext(), Add_Inventory.class);
@@ -119,11 +116,23 @@ public class MainActivity extends AppCompatActivity {
 
             }
         });
+        // Add Inventory End
+
+        // Inventory Panel
+        inventorybutton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(), List_Inventory.class);
+                startActivity(intent);
+                overridePendingTransition(0, 0);
+                finish();
+
+            }
+        });
         // Inventory End
 
-        // Settings Panel
+        // Generate Crate Panel
         Generate_Crate.setOnClickListener(new View.OnClickListener() {
-            @RequiresApi(api = Build.VERSION_CODES.O)
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(getApplicationContext(), Generate_Crate.class);
@@ -132,7 +141,7 @@ public class MainActivity extends AppCompatActivity {
                 finish();
             }
         });
-        // Settings End
+        // Generate Crate End
 
         // Update layout params based on visibility
         updateLayoutParams(adminpbutton, Admincheck == 0);

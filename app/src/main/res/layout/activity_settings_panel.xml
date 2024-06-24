@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    tools:context=".Settings_Panel">
     <LinearLayout
         android:gravity="center"
         android:orientation="vertical"
@@ -31,281 +31,26 @@
                 android:id="@+id/txtdashboard"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="My Dashboard"
+                android:text="Settings"
                 android:textColor="@color/colorAccent"
                 android:textSize="22sp" />
 
-            <TextView
-                android:id="@+id/itemscount"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/txtdashboard"
-                android:text=""
-                android:textColor="@color/colorAccent"
-                android:textSize="14sp" />
         </RelativeLayout>
-        <RelativeLayout
-            android:layout_marginRight="20dp"
-            android:layout_marginLeft="20dp"
-            android:gravity="center"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-
-            <GridLayout
-
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:alignmentMode="alignMargins"
-                android:columnCount="2"
-                android:columnOrderPreserved="false"
-                android:rowCount="3">
-
-                <androidx.cardview.widget.CardView
-                    android:id="@+id/addpbutton"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_rowWeight="1"
-                    android:layout_columnWeight="1"
-                    android:layout_margin="12dp"
-                    android:clickable="true"
-                    android:foreground="?attr/selectableItemBackground"
-                    android:stateListAnimator="@animator/lift_on_touch"
-                    app:cardCornerRadius="12dp"
-                    app:cardElevation="6dp"
-                    app:cardPreventCornerOverlap="false"
-                    app:cardUseCompatPadding="true">
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:gravity="center"
-                        android:orientation="vertical"
-                        android:padding="16dp">
-
-                        <ImageView
-                            android:layout_width="80dp"
-                            android:layout_height="80dp"
-                            android:src="@drawable/ic_additem"
-                            app:tint="@color/colorAccent" />
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="12dp"
-                            android:text="Add Product"
-                            android:textColor="#6f6f6f"
-                            android:textSize="18sp" />
-                    </LinearLayout>
-                </androidx.cardview.widget.CardView>
-
-                <androidx.cardview.widget.CardView
-                    android:id="@+id/listpbutton"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_rowWeight="1"
-                    android:layout_columnWeight="1"
-                    android:layout_margin="12dp"
-                    android:clickable="true"
-                    android:foreground="?attr/selectableItemBackground"
-                    android:stateListAnimator="@animator/lift_on_touch"
-                    app:cardCornerRadius="12dp"
-                    app:cardElevation="6dp"
-                    app:cardPreventCornerOverlap="false"
-                    app:cardUseCompatPadding="true">
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:gravity="center"
-                        android:orientation="vertical"
-                        android:padding="16dp">
-
-                        <ImageView
-                            android:layout_width="80dp"
-                            android:layout_height="80dp"
-                            android:src="@drawable/ic_baseline_backpack_24"
-                            app:tint="@color/colorAccent" />
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_row="0"
-                            android:layout_column="3"
-                            android:layout_marginTop="12dp"
-                            android:text="Product List"
-                            android:textColor="#6f6f6f"
-                            android:textSize="18sp" />
-
-                    </LinearLayout>
-                </androidx.cardview.widget.CardView>
-
-                <androidx.cardview.widget.CardView
-                    android:id="@+id/addInventorybutton"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_rowWeight="1"
-                    android:layout_columnWeight="1"
-                    android:layout_margin="12dp"
-                    android:clickable="true"
-                    android:foreground="?attr/selectableItemBackground"
-                    android:stateListAnimator="@animator/lift_on_touch"
-                    app:cardCornerRadius="12dp"
-                    app:cardElevation="6dp"
-                    app:cardPreventCornerOverlap="false"
-                    app:cardUseCompatPadding="true">
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:gravity="center"
-                        android:orientation="vertical"
-                        android:padding="16dp">
-
-                        <ImageView
-                            android:layout_width="80dp"
-                            android:layout_height="80dp"
-                            android:src="@drawable/ic_baseline_playlist_add_24"
-                            app:tint="@color/colorAccent" />
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_row="0"
-                            android:layout_column="3"
-                            android:layout_marginTop="12dp"
-                            android:text="Add Inventory"
-                            android:textColor="#6f6f6f"
-                            android:textSize="17sp" />
-
-                    </LinearLayout>
-                </androidx.cardview.widget.CardView>
-
-                <androidx.cardview.widget.CardView
-                    android:id="@+id/inventorybutton"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_rowWeight="1"
-                    android:layout_columnWeight="1"
-                    android:layout_margin="12dp"
-                    android:clickable="true"
-                    android:foreground="?attr/selectableItemBackground"
-                    android:stateListAnimator="@animator/lift_on_touch"
-                    app:cardCornerRadius="12dp"
-                    app:cardElevation="6dp"
-                    app:cardPreventCornerOverlap="false"
-                    app:cardUseCompatPadding="true">
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:gravity="center"
-                        android:orientation="vertical"
-                        android:padding="16dp">
-
-                        <ImageView
-                            android:layout_width="80dp"
-                            android:layout_height="80dp"
-                            android:src="@drawable/ic_baseline_list_24"
-                            app:tint="@color/colorAccent" />
-
-                        <TextView
-                            android:layout_width="100dp"
-                            android:layout_height="wrap_content"
-                            android:layout_row="0"
-                            android:layout_column="3"
-                            android:layout_marginTop="12dp"
-                            android:gravity="center"
-                            android:text="Inventory"
-                            android:textColor="#6f6f6f"
-                            android:textSize="18sp" />
-
-                    </LinearLayout>
-                </androidx.cardview.widget.CardView>
-
-                <androidx.cardview.widget.CardView
-                    android:id="@+id/adminpbutton"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_rowWeight="1"
-                    android:layout_columnWeight="1"
-                    android:layout_margin="12dp"
-                    android:clickable="true"
-                    android:foreground="?attr/selectableItemBackground"
-                    android:stateListAnimator="@animator/lift_on_touch"
-                    app:cardCornerRadius="12dp"
-                    app:cardElevation="6dp"
-                    app:cardPreventCornerOverlap="false"
-                    app:cardUseCompatPadding="true">
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:gravity="center"
-                        android:orientation="vertical"
-                        android:padding="16dp">
-
-                        <ImageView
-                            android:layout_width="80dp"
-                            android:layout_height="80dp"
-                            android:src="@drawable/ic_baseline_admin_panel_settings_24"
-                            app:tint="@color/colorAccent" />
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_row="0"
-                            android:layout_column="3"
-                            android:layout_marginTop="12dp"
-                            android:text="Admin Panel"
-                            android:textColor="#6f6f6f"
-                            android:textSize="18sp" />
-
-                    </LinearLayout>
-                </androidx.cardview.widget.CardView>
-
-                <androidx.cardview.widget.CardView
-                    android:id="@+id/settingspbutton"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_rowWeight="1"
-                    android:layout_columnWeight="1"
-                    android:layout_margin="12dp"
-                    android:clickable="true"
-                    android:foreground="?attr/selectableItemBackground"
-                    android:stateListAnimator="@animator/lift_on_touch"
-                    app:cardCornerRadius="12dp"
-                    app:cardElevation="6dp"
-                    app:cardPreventCornerOverlap="false"
-                    app:cardUseCompatPadding="true">
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:gravity="center"
-                        android:orientation="vertical"
-                        android:padding="16dp">
-
-                        <ImageView
-                            android:layout_width="80dp"
-                            android:layout_height="80dp"
-                            android:src="@drawable/ic_baseline_settings_24"
-                            app:tint="@color/colorAccent" />
-
-                        <TextView
-                            android:layout_width="100dp"
-                            android:layout_height="wrap_content"
-                            android:layout_row="0"
-                            android:layout_column="3"
-                            android:layout_marginTop="12dp"
-                            android:gravity="center"
-                            android:text="Settings"
-                            android:textColor="#6f6f6f"
-                            android:textSize="18sp" />
-
-
-                    </LinearLayout>
-                </androidx.cardview.widget.CardView>
-            </GridLayout>
-        </RelativeLayout>
+    <LinearLayout
+        android:gravity="center"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <Button
+            android:id="@+id/logout"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="left"
+            android:layout_marginTop="12dp"
+            android:layout_marginStart="12dp"
+            android:background="@drawable/custom_button"
+            android:text="Log out"
+            android:textColor="#FFFFFF" />
+    </LinearLayout>
     </LinearLayout>
 </ScrollView>

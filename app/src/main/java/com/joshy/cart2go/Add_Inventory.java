@@ -1,23 +1,28 @@
 package com.joshy.cart2go;
 
 import androidx.activity.result.ActivityResultLauncher;
-import androidx.annotation.RequiresApi;
-import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.AlertDialog;
 import android.app.DatePickerDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.Bitmap;
 import android.os.Build;
 import android.os.Bundle;
+import android.text.InputType;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.joshy.cart2go.backend.BarcodeGenerator;
 import com.joshy.cart2go.backend.CaptureAct;
+import com.joshy.cart2go.backend.Inventory;
 import com.joshy.cart2go.backend.JoshEncrypter;
 import com.joshy.cart2go.backend.Product;
 import com.joshy.cart2go.backend.ProductService;
@@ -34,12 +39,10 @@ import retrofit2.Callback;
 import retrofit2.Response;
 import retrofit2.Retrofit;
 
-@RequiresApi(api = Build.VERSION_CODES.O)
 public class Add_Inventory extends AppCompatActivity {
 
     String Barcode,Brand,Variant,Volume,Description;
-    TextView barcodeINV,brandINV,variantINV,volumeINV,descriptioINV,expiryINV,crateINV;
-    Button BarcodeButton;
+    TextView barcodeINV,brandINV,variantINV,volumeINV,descriptioINV,expiryINV,crateINV,quantityINV;
     ImageView imageINV;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,6 +57,7 @@ public class Add_Inventory extends AppCompatActivity {
         descriptioINV = findViewById(R.id.descriptioINV);
         expiryINV = findViewById(R.id.expiryINV);
         crateINV = findViewById(R.id.crateINV);
+        quantityINV = findViewById(R.id.quantityINV);
         imageINV = findViewById(R.id.imageINV);
 
 
@@ -96,8 +100,84 @@ public class Add_Inventory extends AppCompatActivity {
                 datePickerDialog.show();
             }
         });
+        findViewById(R.id.CaseButton).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ScanOptions options = new ScanOptions();
+                options.setPrompt("Scan the QRCode of the crate");
+                options.setBeepEnabled(true);
+                options.setOrientationLocked(true);
+                options.setCaptureActivity(CaptureAct.class);
+                qrLauncher.launch(options);
+            }
+        });
+        findViewById(R.id.Quantitybutton).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                final EditText editText = new EditText(v.getContext());
+                editText.setInputType(InputType.TYPE_CLASS_NUMBER);
+                android.app.AlertDialog.Builder builder = new android.app.AlertDialog.Builder(v.getContext());
+                builder.setTitle("Enter Quantity:");
+                builder.setMessage("Quantity:");
+                builder.setView(editText);
 
+                builder.setPositiveButton("Confirm", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        String quantity = editText.getText().toString();
+                        if (quantity.isEmpty() || !quantity.matches("\\d+")) { // check if empty or not a number
+                            Toast.makeText(v.getContext(), "Invalid input. Please enter a valid quantity. 0-9", Toast.LENGTH_SHORT).show();
+                            return;
+                        }
+                        quantityINV.setText(quantity);
+                    }
+                });
 
+                builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.dismiss();
+                    }
+                });
+
+                AlertDialog dialog = builder.create();
+                dialog.show();
+            }
+        });
+        findViewById(R.id.addProductButtonINV).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String barcode = barcodeINV.getText().toString();
+                String expiry = expiryINV.getText().toString();
+                String crate = crateINV.getText().toString();
+                String quantity = quantityINV.getText().toString();
+                if(barcodeINV.getText().toString().trim().equals("Barcode") || expiryINV.getText().toString().trim().equals("Expiry Date") || crateINV.getText().toString().trim().equals("Crate") || quantityINV.getText().toString().trim().equals("Quantity") || barcodeINV.getText().toString().trim().isEmpty() || expiryINV.getText().toString().trim().isEmpty() || crateINV.getText().toString().trim().isEmpty() || quantityINV.getText().toString().trim().isEmpty()){
+                    Toast.makeText(getApplicationContext(), "Please fill up the information", Toast.LENGTH_LONG).show();
+                    return;
+                }
+
+                Inventory inventory = new Inventory(barcode,crate,expiry,quantity);
+                Retrofit retrofit = RetrofitClient.getClient("4a6991e578554757df7656ac3ac44b73eb9be43a54e9835fdd0444805fd346f29497c5b46a81e484f9598c915200e9fd3fc9b74a6f1e0e0798cdd0879a33439b");
+                ProductService service = retrofit.create(ProductService.class);
+                Call<Inventory> call = service.addInventory(inventory);
+                call.enqueue(new Callback<Inventory>() {
+                    @Override
+                    public void onResponse(Call<Inventory> call, Response<Inventory> response) {
+                        if (response.isSuccessful()) {
+                            Toast.makeText(getApplicationContext(), "Product added to inventory", Toast.LENGTH_LONG).show();
+                        } else {
+                            Toast.makeText(getApplicationContext(), "(Inventory) Error1:", Toast.LENGTH_LONG).show();
+                        }
+                    }
+
+                    @Override
+                    public void onFailure(Call<Inventory> call, Throwable t) {
+                        descriptioINV.setText(t.getMessage());
+                        Toast.makeText(getApplicationContext(), "(Inventory) Error2: " + t.getMessage(), Toast.LENGTH_LONG).show();
+                    }
+                });
+            }
+         });
 
     }
     ActivityResultLauncher<ScanOptions> barLauncher = registerForActivityResult(new ScanContract(), result->{
@@ -151,7 +231,18 @@ public class Add_Inventory extends AppCompatActivity {
                     t.printStackTrace();
                 }
             });
-            //JoshEncrypter.encode(result.getContents())
+        }
+    });
+    ActivityResultLauncher<ScanOptions> qrLauncher = registerForActivityResult(new ScanContract(), result->{
+        if(result.getContents() != null){
+            try{
+                String Text = JoshEncrypter.decode(result.getContents());
+                crateINV.setText(Text);
+            }catch (Throwable t){
+                Toast.makeText(getApplicationContext(), "That's not a crate", Toast.LENGTH_LONG).show();
+            }
+        }else{
+            Toast.makeText(getApplicationContext(), "That's not a crate", Toast.LENGTH_SHORT).show();
         }
     });
 }

@@ -1,6 +1,5 @@
 package com.joshy.cart2go;
 
-import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.AlertDialog;
@@ -53,7 +52,6 @@ public class Generate_Crate extends AppCompatActivity {
                 builder.setView(editText);
 
                 builder.setPositiveButton("Generate Crate", new DialogInterface.OnClickListener() {
-                    @RequiresApi(api = Build.VERSION_CODES.O)
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         String text = editText.getText().toString();

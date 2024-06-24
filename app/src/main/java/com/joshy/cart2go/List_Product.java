@@ -31,7 +31,6 @@ public class List_Product extends AppCompatActivity {
     private ProductAdapter adapter;
     private List<Product> productList;
     private SearchView searchView;
-    private Button backButton;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -49,8 +48,8 @@ public class List_Product extends AppCompatActivity {
 
         // Set up search functionality
         setupSearchView();
-        backButton = findViewById(R.id.backButton);
-        backButton.setOnClickListener(new View.OnClickListener() {
+
+        findViewById(R.id.backButton).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getApplicationContext(), MainActivity.class);
@@ -96,12 +95,8 @@ public class List_Product extends AppCompatActivity {
     };
 
     private void searchProducts(String brand) {
-        // Retrofit setup...
-        // Create Retrofit instance with appropriate JWT token
         Retrofit retrofit = RetrofitClient.getClient("4a6991e578554757df7656ac3ac44b73eb9be43a54e9835fdd0444805fd346f29497c5b46a81e484f9598c915200e9fd3fc9b74a6f1e0e0798cdd0879a33439b");
         ProductService service = retrofit.create(ProductService.class);
-
-        // Make network request to search products by brand name
         Call<List<Product>> call = service.searchProducts(brand);
         call.enqueue(new Callback<List<Product>>() {
             @Override

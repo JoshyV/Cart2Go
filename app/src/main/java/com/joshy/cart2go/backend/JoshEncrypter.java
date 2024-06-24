@@ -1,7 +1,6 @@
 package com.joshy.cart2go.backend;
 
 import android.os.Build;
-import androidx.annotation.RequiresApi;
 import javax.crypto.Cipher;
 import javax.crypto.spec.IvParameterSpec;
 import javax.crypto.spec.SecretKeySpec;
@@ -13,7 +12,6 @@ import java.util.Base64;
 public class JoshEncrypter {
     private static final String SECRET_KEY = "12345678901234567890123456789822";
 
-    @RequiresApi(api = Build.VERSION_CODES.O)
     public static String encode(String text) {
         try {
             byte[] ivBytes = new byte[16];
@@ -36,7 +34,6 @@ public class JoshEncrypter {
         }
     }
 
-    @RequiresApi(api = Build.VERSION_CODES.O)
     public static String decode(String text) {
         try {
             byte[] combinedBytes = Base64.getDecoder().decode(text);

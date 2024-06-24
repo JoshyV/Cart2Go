@@ -25,6 +25,11 @@
         android:theme="@style/Theme.Cart2Go"
         tools:targetApi="33">
         <activity
+            android:name=".List_Inventory"
+            android:exported="true"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.Design.Light.NoActionBar" />
+        <activity
             android:name=".Generate_Crate"
             android:exported="true"
             android:screenOrientation="portrait"

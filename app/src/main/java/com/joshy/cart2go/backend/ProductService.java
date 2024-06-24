@@ -32,4 +32,10 @@ public interface ProductService {
 
     @POST("/login")
     Call<LoginRequest.Response> login(@Body LoginRequest.Request request);
+
+    @POST("/inventory")
+    Call<Inventory> addInventory(@Body Inventory inventory);
+
+    @GET("/getinventory")
+    Call<List<Inventory>> getInventory();
 }

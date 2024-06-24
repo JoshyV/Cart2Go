@@ -94,6 +94,14 @@
                         android:textColor="#6f6f6f"
                         android:hint="Crate"
                         android:text="Crate"/>
+                    <TextView
+                        android:id="@+id/quantityINV"
+                        android:layout_width="200dp"
+                        android:layout_height="wrap_content"
+                        android:textSize="18sp"
+                        android:textColor="#6f6f6f"
+                        android:hint="Quantity"
+                        android:text="Quantity"/>
                 </LinearLayout>
             </GridLayout>
         </LinearLayout>
@@ -147,7 +155,7 @@
                     android:textColor="#FFFFFF"/>
 
                 <Button
-                    android:id="@+id/addProductButton"
+                    android:id="@+id/Quantitybutton"
                     android:layout_width="150dp"
                     android:layout_height="wrap_content"
                     android:layout_row="0"
@@ -155,7 +163,7 @@
                     android:layout_columnWeight="1"
                     android:layout_gravity="center_horizontal"
                     android:background="@drawable/custom_button"
-                    android:text="Add product"
+                    android:text="Quantity"
                     android:textColor="#FFFFFF" />
 
                 <Button
@@ -173,5 +181,24 @@
             </GridLayout>
 
         </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="10dp"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:padding="5dp">
+        <Button
+            android:id="@+id/addProductButtonINV"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:layout_row="0"
+            android:layout_column="1"
+            android:layout_columnWeight="1"
+            android:layout_gravity="center_horizontal"
+            android:background="@drawable/custom_button"
+            android:text="Add product"
+            android:textColor="#FFFFFF" />
+    </LinearLayout>
     </LinearLayout>
 </RelativeLayout>

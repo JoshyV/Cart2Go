@@ -4,7 +4,6 @@ import androidx.activity.result.ActivityResult;
 import androidx.activity.result.ActivityResultCallback;
 import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
-import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.Activity;
@@ -44,7 +43,6 @@ import retrofit2.Callback;
 import retrofit2.Response;
 import retrofit2.Retrofit;
 
-@RequiresApi(api = Build.VERSION_CODES.O)
 public class Add_Product extends AppCompatActivity {
 
     Bitmap bitmap,resizedBitmap,rotatedBitmap;
@@ -226,7 +224,6 @@ public class Add_Product extends AppCompatActivity {
         return Bitmap.createScaledBitmap(bitmap, width, height, true);
     }
     private void addProduct() throws IOException {
-
         if(resizedBitmap != null) {
             ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
             resizedBitmap.compress(Bitmap.CompressFormat.JPEG, 60, byteArrayOutputStream);

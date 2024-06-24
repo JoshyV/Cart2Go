@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".List_Inventory">
+
+    <Button
+        style="@style/Widget.AppCompat.Button.Colored"
+        android:id="@+id/backButtonINV"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
+        android:text="Back"
+        android:background="@color/colorAccent"
+        android:textColor="#FFFFFF"/>
+
+    <SearchView
+        android:id="@+id/searchViewINV"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
+        android:layout_toEndOf="@id/backButtonINV"
+        android:layout_toRightOf="@id/backButtonINV"
+        android:iconifiedByDefault="false"
+        android:queryHint="Search Products" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerViewINV"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/searchViewINV"
+        android:layout_marginTop="8dp"
+        android:scrollbars="vertical" />
+
+</RelativeLayout>
