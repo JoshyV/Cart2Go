@@ -38,4 +38,10 @@ public interface ProductService {
 
     @GET("/getinventory")
     Call<List<Inventory>> getInventory();
+
+    @GET("/searchbarcodeinventory")
+    Call<List<Inventory>> SearchBarcodeInventory(@Query("barcode") String barcode);
+
+    @GET("/searchcrate")
+    Call<List<Inventory>> SearchCrate(@Query("crate") String crate);
 }

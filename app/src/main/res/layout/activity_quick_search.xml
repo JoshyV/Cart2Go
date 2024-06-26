@@ -34,12 +34,26 @@
         android:text="Search"
         android:textColor="#FFFFFF" />
 
+    <TextView
+        android:id="@+id/errortext"
+        android:layout_width="200dp"
+        android:layout_height="220dp"
+        android:layout_alignTop="@+id/recyclerViewQS"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="106dp"
+        android:layout_marginTop="11dp"
+        android:layout_marginEnd="105dp"
+        android:layout_marginBottom="16dp"
+        android:textSize="18sp"
+        android:textStyle="bold" />
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerViewQS"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_below="@id/SearchButtonQS"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="16dp"
         android:scrollbars="vertical" />
 
 </RelativeLayout>
