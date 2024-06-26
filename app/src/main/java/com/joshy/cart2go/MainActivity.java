@@ -12,7 +12,7 @@ import android.content.Intent;
 
 public class MainActivity extends AppCompatActivity {
 
-    CardView addpbutton, listpbutton, adminpbutton,settingspbutton,addInventorybutton,inventorybutton,Generate_Crate;
+    CardView addpbutton, listpbutton, adminpbutton,settingspbutton,addInventorybutton,inventorybutton,Generate_Crate,QuickSearch;
     TextView itemscount;
 
     @Override
@@ -27,6 +27,7 @@ public class MainActivity extends AppCompatActivity {
         int AddInvCheck = userdata.getInt("AddInventoryCheck", 0);
         int InvCheck = userdata.getInt("InventoryCheck", 0);
         int GenCheck = userdata.getInt("GenerateCheck", 0);
+        int QuickSCheck = userdata.getInt("QuickSearch", 0);
         addpbutton = findViewById(R.id.addpbutton);
         listpbutton = findViewById(R.id.listpbutton);
         adminpbutton = findViewById(R.id.adminpbutton);
@@ -34,6 +35,7 @@ public class MainActivity extends AppCompatActivity {
         addInventorybutton = findViewById(R.id.addInventorybutton);
         inventorybutton = findViewById(R.id.inventorybutton);
         Generate_Crate = findViewById(R.id.Generate_Crate);
+        QuickSearch = findViewById(R.id.QuickSearchButton);
         itemscount = findViewById(R.id.itemscount);
 
 
@@ -43,6 +45,7 @@ public class MainActivity extends AppCompatActivity {
         addInventorybutton.setVisibility(AddInvCheck == 0 ? View.GONE : View.VISIBLE);
         inventorybutton.setVisibility(InvCheck == 0 ? View.GONE : View.VISIBLE);
         Generate_Crate.setVisibility(GenCheck == 0 ? View.GONE : View.VISIBLE);
+        QuickSearch.setVisibility(QuickSCheck == 0 ? View.GONE : View.VISIBLE);
 
         countitem += (Admincheck == 1) ? 1 : 0;
         countitem += (AddPCheck == 1) ? 1 : 0;
@@ -143,6 +146,18 @@ public class MainActivity extends AppCompatActivity {
         });
         // Generate Crate End
 
+        // Quick Search Panel
+        QuickSearch.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(), QuickSearch.class);
+                startActivity(intent);
+                overridePendingTransition(0, 0);
+                finish();
+            }
+        });
+        // Quick Search End
+
         // Update layout params based on visibility
         updateLayoutParams(adminpbutton, Admincheck == 0);
         updateLayoutParams(addpbutton, AddPCheck == 0);
@@ -150,6 +165,7 @@ public class MainActivity extends AppCompatActivity {
         updateLayoutParams(addInventorybutton, AddInvCheck == 0);
         updateLayoutParams(inventorybutton, InvCheck == 0);
         updateLayoutParams(Generate_Crate, GenCheck == 0);
+        updateLayoutParams(QuickSearch, QuickSCheck == 0);
         updateLayoutParams(settingspbutton, false);
 
     }

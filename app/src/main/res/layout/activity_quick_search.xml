@@ -7,36 +7,38 @@
     tools:context=".List_Inventory">
 
     <Button
-        android:id="@+id/backButtonINV"
         style="@style/Widget.AppCompat.Button.Colored"
+        android:id="@+id/backButtonQS"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="8dp"
-        android:background="@color/colorAccent"
         android:text="Back"
-        android:textColor="#FFFFFF" />
+        android:background="@color/colorAccent"
+        android:textColor="#FFFFFF"/>
 
-    <SearchView
-        android:id="@+id/searchViewINV"
+    <Button
+        android:id="@+id/SearchButtonQS"
+        style="@style/Widget.AppCompat.Button.Colored"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="8dp"
-        android:layout_toEndOf="@id/backButtonINV"
-        android:layout_toRightOf="@id/backButtonINV"
-        android:iconifiedByDefault="false"
-        android:queryHint="Search Products" />
+        android:layout_toEndOf="@id/backButtonQS"
+        android:layout_toRightOf="@id/backButtonQS"
+        android:background="@color/colorAccent"
+        android:text="Search"
+        android:textColor="#FFFFFF" />
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recyclerViewINV"
+        android:id="@+id/recyclerViewQS"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@id/searchViewINV"
+        android:layout_below="@id/SearchButtonQS"
         android:layout_marginTop="8dp"
         android:scrollbars="vertical" />
 

@@ -25,6 +25,12 @@
         android:theme="@style/Theme.Cart2Go"
         tools:targetApi="33">
         <activity
+            android:name=".QuickSearch"
+            android:exported="true"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.Design.Light.NoActionBar" />
+
+        <activity
             android:name=".List_Inventory"
             android:exported="true"
             android:screenOrientation="portrait"
@@ -51,7 +57,9 @@
             android:theme="@style/Theme.Design.Light.NoActionBar" />
         <activity
             android:name=".Admin_Panel"
-            android:exported="false" />
+            android:exported="true"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.Design.Light.NoActionBar" />
         <activity
             android:name=".Login"
             android:exported="true"

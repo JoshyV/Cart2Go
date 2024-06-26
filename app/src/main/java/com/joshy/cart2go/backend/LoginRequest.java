@@ -50,6 +50,8 @@ public class LoginRequest {
             private int inventory;
             @SerializedName("generatecrate")
             private int generatecrate;
+            @SerializedName("quicksearch")
+            private int quicksearch;
             @SerializedName("username")
             private String username;
 
@@ -80,6 +82,10 @@ public class LoginRequest {
 
             public int getGenerateCrate() {
                 return generatecrate;
+            }
+
+            public int getQuickSearch() {
+                return quicksearch;
             }
 
             public String getUsername() {

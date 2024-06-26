@@ -16,6 +16,9 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.joshy.cart2go.R;
 import com.squareup.picasso.Picasso;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 import retrofit2.Call;
@@ -43,7 +46,7 @@ public class InventoryAdapter extends RecyclerView.Adapter<InventoryAdapter.View
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
         Inventory inventory = inventoryList.get(position);
-        holder.barcodeTextView.setText("Barcode: " + inventory.getBarcode());
+        holder.barcodeTextView.setText(inventory.getBarcode());
 
         Retrofit retrofit = RetrofitClient.getClient("4a6991e578554757df7656ac3ac44b73eb9be43a54e9835fdd0444805fd346f29497c5b46a81e484f9598c915200e9fd3fc9b74a6f1e0e0798cdd0879a33439b");
         ProductService productAPI = retrofit.create(ProductService.class);
@@ -55,10 +58,25 @@ public class InventoryAdapter extends RecyclerView.Adapter<InventoryAdapter.View
                     List<Product> productList = response.body();
                     if (productList!= null &&!productList.isEmpty()) {
                         Product product = productList.get(0);
-                        holder.brandTextView.setText("Brand: " + product.getBrand());
-                        holder.variantTextView.setText("Variant: " + product.getVariant());
-                        holder.volumeTextView.setText("Volume: " + product.getVolume());
-                        holder.descriptionTextView.setText("Description: " + product.getDescription());
+                        Picasso.with(context)
+                                .load(product.getImage())
+                                .into(holder.ItemPreviewINVLIST);
+                        holder.brandTextView.setText(product.getBrand());
+                        holder.variantTextView.setText(product.getVariant());
+                        holder.volumeTextView.setText(product.getVolume());
+                        holder.quantityTextView.setText("Quantity: " + inventory.getQuantity());
+                        holder.crateTextView.setText("Crate: " + inventory.getCrate());
+                        SimpleDateFormat originalFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'");
+                        SimpleDateFormat targetFormat = new SimpleDateFormat("yyyy-MM-dd");
+
+                        Date date = null;
+                        try {
+                            date = originalFormat.parse(inventory.getExpiry());
+                        } catch (ParseException e) {
+                            e.printStackTrace();
+                        }
+                        String reformattedDate = targetFormat.format(date);
+                        holder.ExpiryINVLIST.setText("Expiry: " + reformattedDate);
                     }
                 } else {
                     Log.e("Error", "Error fetching product data");
@@ -72,6 +90,13 @@ public class InventoryAdapter extends RecyclerView.Adapter<InventoryAdapter.View
         });
     }
 
+
+    /*@Override
+    public void onBindViewHolder(@NonNull InventoryAdapter.ViewHolder holder, int position) {
+        Inventory inventory = inventoryList.get(position);
+        holder.bind(inventory);
+    }*/
+
     @Override
     public int getItemCount() {
         return inventoryList.size();
@@ -82,15 +107,21 @@ public class InventoryAdapter extends RecyclerView.Adapter<InventoryAdapter.View
         public TextView brandTextView;
         public TextView variantTextView;
         public TextView volumeTextView;
-        public TextView descriptionTextView;
+        public TextView quantityTextView;
+        public TextView crateTextView;
+        public TextView ExpiryINVLIST;
+        public ImageView ItemPreviewINVLIST;
 
         public ViewHolder(View itemView) {
             super(itemView);
-            barcodeTextView = itemView.findViewById(R.id.barcodeTextView);
-            brandTextView = itemView.findViewById(R.id.brandTextView);
-            variantTextView = itemView.findViewById(R.id.variantTextView);
-            volumeTextView = itemView.findViewById(R.id.volumeTextView);
-            descriptionTextView = itemView.findViewById(R.id.descriptionTextView);
+            barcodeTextView = itemView.findViewById(R.id.BarcodeINVLIST);
+            brandTextView = itemView.findViewById(R.id.BrandINVLIST);
+            variantTextView = itemView.findViewById(R.id.VariantINVLIST);
+            volumeTextView = itemView.findViewById(R.id.VolumeINVLIST);
+            quantityTextView = itemView.findViewById(R.id.QuantityINVLIST);
+            crateTextView = itemView.findViewById(R.id.CrateINVLIST);
+            ExpiryINVLIST = itemView.findViewById(R.id.ExpiryINVLIST);
+            ItemPreviewINVLIST = itemView.findViewById(R.id.ItemPreviewINVLIST);
         }
     }
 }

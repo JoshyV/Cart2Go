@@ -225,6 +225,11 @@ public class Add_Product extends AppCompatActivity {
     }
     private void addProduct() throws IOException {
         if(resizedBitmap != null) {
+            if(barcode.getText().toString().trim().equals("Barcode") || brand.getText().toString().trim().equals("Brand") || variant.getText().toString().trim().equals("Variant") || volume.getText().toString().trim().equals("Volume") || barcode.getText().toString().trim().isEmpty() || brand.getText().toString().trim().isEmpty() || variant.getText().toString().trim().isEmpty() || volume.getText().toString().trim().isEmpty()){
+                Toast.makeText(getApplicationContext(), "Please fill up the information", Toast.LENGTH_LONG).show();
+                return;
+            }
+
             ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
             resizedBitmap.compress(Bitmap.CompressFormat.JPEG, 60, byteArrayOutputStream);
             byte[] bytes = byteArrayOutputStream.toByteArray();

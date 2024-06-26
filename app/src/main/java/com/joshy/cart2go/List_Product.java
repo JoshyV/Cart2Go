@@ -104,13 +104,11 @@ public class List_Product extends AppCompatActivity {
                 if (response.isSuccessful()) {
                     List<Product> searchResults = response.body();
                     if (searchResults != null) {
-                        // Update RecyclerView with search results
-                        productList.clear(); // Clear existing list
-                        productList.addAll(searchResults); // Add search results
+                        productList.clear();
+                        productList.addAll(searchResults);
                         adapter.notifyDataSetChanged();
                     }
                 } else {
-                    // Handle unsuccessful response
                     Toast.makeText(getApplicationContext(), "Failed to fetch search results", Toast.LENGTH_SHORT).show();
                 }
             }

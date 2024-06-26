@@ -58,6 +58,7 @@ public class Login extends AppCompatActivity {
                                 editor.putInt("AddInventoryCheck", user.getaddInventory());
                                 editor.putInt("InventoryCheck", user.getInventory());
                                 editor.putInt("GenerateCheck", user.getGenerateCrate());
+                                editor.putInt("QuickSearch", user.getQuickSearch());
                                 editor.apply();
                                 Intent intent = new Intent(Login.this, MainActivity.class);
                                 startActivity(intent);
@@ -125,6 +126,7 @@ public class Login extends AppCompatActivity {
                         editor.putInt("AddInventoryCheck", user.getaddInventory());
                         editor.putInt("InventoryCheck", user.getInventory());
                         editor.putInt("GenerateCheck", user.getGenerateCrate());
+                        editor.putInt("QuickSearch", user.getQuickSearch());
                         editor.apply();
 
                         Intent intent = new Intent(Login.this, MainActivity.class);

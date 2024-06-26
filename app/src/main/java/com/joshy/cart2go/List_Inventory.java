@@ -8,6 +8,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.Toast;
 
 import com.joshy.cart2go.backend.Inventory;
 import com.joshy.cart2go.backend.InventoryAdapter;
@@ -41,6 +42,8 @@ public class List_Inventory extends AppCompatActivity {
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
+        recyclerView.postDelayed(pollingRunnable, 1000);
+
         findViewById(R.id.backButtonINV).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -58,16 +61,53 @@ public class List_Inventory extends AppCompatActivity {
             @Override
             public void onResponse(Call<List<com.joshy.cart2go.backend.Inventory>> call, Response<List<com.joshy.cart2go.backend.Inventory>> response) {
                 if (response.isSuccessful()) {
-                    List<com.joshy.cart2go.backend.Inventory> inventoryList = response.body();
-                    recyclerView.setAdapter(adapter);
+                    List<Inventory> inventoryList = response.body();
+                    if (inventoryList != null) {
+                        // Update RecyclerView with search results
+                        InventoryList.clear(); // Clear existing list
+                        InventoryList.addAll(inventoryList); // Add search results
+                        adapter.notifyDataSetChanged();
+                    }
                 } else {
-                    Log.e("Error", "Error fetching data");
+                    Toast.makeText(getApplicationContext(), "Failed to fetch search results", Toast.LENGTH_SHORT).show();
                 }
             }
 
             @Override
             public void onFailure(Call<List<com.joshy.cart2go.backend.Inventory>> call, Throwable t) {
                 Log.e("Error", "Error fetching data", t);
+            }
+        });
+    }
+    private Runnable pollingRunnable = new Runnable() {
+        @Override
+        public void run() {
+            pollForUpdates();
+            recyclerView.postDelayed(this, 5000); // Poll every 5 seconds (adjust as needed)
+        }
+    };
+    private void pollForUpdates() {
+        Retrofit retrofit = RetrofitClient.getClient("4a6991e578554757df7656ac3ac44b73eb9be43a54e9835fdd0444805fd346f29497c5b46a81e484f9598c915200e9fd3fc9b74a6f1e0e0798cdd0879a33439b");
+        ProductService service = retrofit.create(ProductService.class);
+        Call<List<Inventory>> call = service.getInventory();
+        call.enqueue(new Callback<List<Inventory>>() {
+            @Override
+            public void onResponse(Call<List<Inventory>> call, Response<List<Inventory>> response) {
+                if (response.isSuccessful()) {
+                    List<Inventory> Inventoryresponse = response.body();
+                    if (Inventoryresponse != null) {
+                        InventoryList.clear(); // Clear existing list
+                        InventoryList.addAll(Inventoryresponse); // Add updated list
+                        adapter.notifyDataSetChanged();
+                    }
+                }
+            }
+
+            @Override
+            public void onFailure(Call<List<Inventory>> call, Throwable t) {
+                Toast.makeText(getApplicationContext(), "Error! " + t, Toast.LENGTH_LONG).show();
+                Log.e("TAG", "Error message: " + t.getMessage()); // This logs an error message with the exception's message
+                t.printStackTrace();
             }
         });
     }
